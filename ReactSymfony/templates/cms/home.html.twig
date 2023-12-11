@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{controller_name}}{% endblock %}
+
+{% block body %}
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div {{ react_component('NavBar', { 'username': app.user.username }) }}></div>
+        <div {{ react_component('SideBar') }}></div>
+    {% else %}
+        <div {{ react_component('NavBar', { 'username': "" }) }}></div>
+        <div {{ react_component('SideBar') }}></div>
+    {% endif %}
+
+{% endblock %}

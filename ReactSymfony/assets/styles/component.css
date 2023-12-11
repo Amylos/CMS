@@ -1,0 +1,26 @@
+
+
+/***********************/
+/********NAVBAR*********/
+/***********************/
+
+.NavBar{
+    width: 100%;
+    height: 8vh;
+    background: lightcoral;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+/***********************/
+/*******SIDEBAR*********/
+/***********************/
+
+.SideBar{
+    width: 10%;
+    height: 92vh;
+    background: lightblue;
+    display: flex;
+    flex-direction: column;
+}

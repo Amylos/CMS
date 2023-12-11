@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{controller_name}}{% endblock %}
+{% block body %}
+
+
+
+{# {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+<a href ="{{ path('app_logout')}}">
+    <div style="width: 300px; display:flex; justify-content: space-between;">
+        <p> LOG OUT </p>
+        <p> Username {{ app.user.username }}</p>
+    </div>
+</a>
+{% else %}
+<a href ="{{ path('app_login')}}">
+    <p> LOG IN </p>
+</a>
+{% endif %} #}
+
+    {# <div {{ react_component('NavBar') }}></div>
+    <div {{ react_component('SideBar') }}></div> #}
+    <div {{ react_component('MyComponent', { 'fullName': app.user.username }) }}></div>
+
+
+    <div {{ react_component('MyComponent') }}></div>
+    <div {{ react_component('Modal') }}></div>
+    <div {{ react_component('Radio') }}></div>
+    <div {{ react_component('Drop') }}></div>
+    <div {{ react_component('Transition') }}></div>
+
+
+{% endblock %}
