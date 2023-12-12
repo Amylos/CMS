@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Media = () => {
+const Media = (props) => {
     return (
         <div className='Media'>
                 Media

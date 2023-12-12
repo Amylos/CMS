@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Theme = () => {
+const Theme = (props) => {
     return (
         <div className='Theme'>
             Theme

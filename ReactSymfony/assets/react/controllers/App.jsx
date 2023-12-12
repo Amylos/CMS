@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from './NavBar';
 import SideBar from './SideBar';
 import { useState } from 'react';
+import DashBoard from './DashBoard';
 
 
 
@@ -19,25 +20,62 @@ const App = (props) => {
 
 const Display = (props) =>{
 
-    if(props.username){
-        switch(content){
-            case "DashBoard":
-                break;
-            case "Data":
-                break;
-            case "Media":
-                break;
-            case "Theme":
-                break;
-            case "Users":
-                break;
-            case "Article":
-                break;
+    // if(props.username){
+    //     switch(content){
+    //         case "DashBoard":
+    //                 return
+    //                 <>
+    //                     <NavBar username = {props.username}/>
+    //                     <SideBar/>
+    //                 </>
+    //             break;
+    //         case "Data":
+    //                 return
+    //                 <>
+    //                     <NavBar username = {props.username}/>
+    //                     <SideBar/>
+    //                 </>
+    //             break;
+    //         case "Media":
+    //                 return
+    //                 <>
+    //                     <NavBar username = {props.username}/>
+    //                     <SideBar/>
+    //                 </>
+    //             break;
+    //         case "Theme":
+    //                 return
+    //                 <>
+    //                     <NavBar username = {props.username}/>
+    //                     <SideBar/>
+    //                 </>
+    //             break;
+    //         case "Users":
+    //             return
+    //                 <>
+    //                     <NavBar username = {props.username}/>
+    //                     <SideBar/>
+    //                 </>
+    //             break;
+    //         case "Article":
+    //                 return
+    //                 <>
+    //                     <NavBar username = {props.username}/>
+    //                     <SideBar/>
+    //                 </>
+    //             break;
 
-        }
-    }
+    //     }
+    // }
+    // else{
+    //     return
+    //     <>
+    //         <NavBar username={props.username} />
+    //         <DashBoard username={props.username}/>
+    //     </>
+    // }
+    return <NavBar username={props.username} />
 
-    return <NavBar username={props.username} />;
 }
 
 
