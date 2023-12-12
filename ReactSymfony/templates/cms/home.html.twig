@@ -5,11 +5,9 @@
 {% block body %}
 
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <div {{ react_component('NavBar', { 'username': app.user.username }) }}></div>
-        <div {{ react_component('SideBar') }}></div>
+        <div {{ react_component('App', { 'username': app.user.username }) }}></div>
     {% else %}
-        <div {{ react_component('NavBar', { 'username': "" }) }}></div>
-        <div {{ react_component('SideBar') }}></div>
+        <div {{ react_component('App', { 'username': "" }) }}></div>
     {% endif %}
 
 {% endblock %}

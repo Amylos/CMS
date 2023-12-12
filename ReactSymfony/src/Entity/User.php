@@ -20,14 +20,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180, unique: true)]
     private ?string $username = null;
 
-    // #[ORM\Column(length: 180, unique: true)]
-    // private ?string $firstName = null;
+    #[ORM\Column(length: 180, unique: true)]
+    private ?string $firstName = null;
 
-    // #[ORM\Column(length: 180, unique: true)]
-    // private ?string $lastName = null;
+    #[ORM\Column(length: 180, unique: true)]
+    private ?string $lastName = null;
 
-    // #[ORM\Column(length: 180, unique: true)]
-    // private ?string $mail = null;
+    #[ORM\Column(length: 180, unique: true)]
+    private ?string $mail = null;
 
     #[ORM\Column]
     private array $roles = [];
@@ -43,41 +43,41 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->id;
     }
 
-    // public function getFirstName(): ?string
-    // {
-    //     return $this->firstName;
-    // }
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
 
-    // public function setFirstName(string $firstName): static
-    // {
-    //     $this->firstName = $firstName;
+    public function setFirstName(string $firstName): static
+    {
+        $this->firstName = $firstName;
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
-    // public function getLastName(): ?string
-    // {
-    //     return $this->lastName;
-    // }
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
 
-    // public function setLastName(string $lastName): static
-    // {
-    //     $this->lastName = $lastName;
+    public function setLastName(string $lastName): static
+    {
+        $this->lastName = $lastName;
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
-    // public function getMail(): ?string
-    // {
-    //     return $this->mail;
-    // }
+    public function getMail(): ?string
+    {
+        return $this->mail;
+    }
 
-    // public function setMail(string $mail): static
-    // {
-    //     $this->mail = $mail;
+    public function setMail(string $mail): static
+    {
+        $this->mail = $mail;
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
     public function getUsername(): ?string
     {
