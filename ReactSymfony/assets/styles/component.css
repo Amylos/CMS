@@ -1,4 +1,12 @@
+/***********************/
+/*******CONTENT*********/
+/***********************/
 
+.Content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
 
 /***********************/
 /********NAVBAR*********/
@@ -11,14 +19,14 @@
     justify-content: space-around;
 }
 
-
 /***********************/
 /*******SIDEBAR*********/
 /***********************/
 
 .SideBar{
     width: 10%;
-    height: 92vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
+
