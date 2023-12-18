@@ -14,11 +14,12 @@ import Content from './Content';
 
 
 const App = (props) => {
-    console.log('App : ', props);
+
+
     return (
         <div className='App'>
             <NavBar username = {props.username}/>
-            <Content connected = {props.connected}/>
+            <Content connected = {props.connected} />
         </div>
       );
 

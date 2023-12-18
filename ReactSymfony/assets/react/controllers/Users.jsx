@@ -1,9 +1,10 @@
 import React from 'react';
 
 const Users = (props) => {
-    return (
+
+  return (
         <div className='Users'>
-                Users
+          Users
         </div>
       );
 }

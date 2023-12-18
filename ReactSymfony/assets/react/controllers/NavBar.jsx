@@ -5,7 +5,7 @@ const NavBar = (props) => {
     console.log('NavBar : ',props);
     return (
         <div className="NavBar">
-            <a href="/home" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Home</a>
+            <a href="/home" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">LOGO</a>
             <h1>Nb article</h1>
             <h1>clear cache</h1>
             <p> connected as : {props.username}</p>

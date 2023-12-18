@@ -4,7 +4,6 @@
 {% block body %}
 
 
-
 {# {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 <a href ="{{ path('app_logout')}}">
     <div style="width: 300px; display:flex; justify-content: space-between;">
@@ -18,12 +17,13 @@
 </a>
 {% endif %} #}
 
+    {# <div {{ react_component('Chart') }}></div> #}
 
-
+    {# <div {{ react_component('PieChart') }}></div>
     <div {{ react_component('Modal') }}></div>
     <div {{ react_component('Radio') }}></div>
     <div {{ react_component('Drop') }}></div>
-    <div {{ react_component('Transition') }}></div>
+    <div {{ react_component('Transition') }}></div> #}
 
 
 {% endblock %}

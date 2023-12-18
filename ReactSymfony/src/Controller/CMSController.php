@@ -5,9 +5,17 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\UserRepository;
 
 class CMSController extends AbstractController
 {
+    private $userRepository;
+
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
     #[Route('/', name: 'app')]
     public function index(): Response
     {
@@ -19,8 +27,27 @@ class CMSController extends AbstractController
     #[Route('/home', name: 'app_home')]
     public function home(): Response
     {
+
+
+        $users = $this->userRepository->findAllUsers();
+
+        // Convertir la ArrayCollection en un tableau associatif
+        // $usersArray = [];
+        // foreach ($users as $user) {
+        //     $usersArray[] = [
+        //         'id' => $user->getId(),
+        //         'username' => $user->getUsername(),
+        //         'firstName' => $user->getFirstName(),
+        //         'lastName' => $user->getLastName(),
+        //         'mail' => $user->getMail(),
+        //         'roles' => $user->getRoles(),
+        //     ];
+        // }
+        // $jsonUsers = json_encode($usersArray);
+
         return $this->render('cms/home.html.twig', [
             'controller_name' => 'app_home',
+            // 'users' =>  $jsonUsers
         ]);
     }
 
@@ -32,11 +59,5 @@ class CMSController extends AbstractController
         ]);
     }
 
-    #[Route('/registration', name: 'app_registration')]
-    public function Registration(): Response
-    {
-        return $this->render('cms/registration.html.twig', [
-            'controller_name' => 'app_registration',
-        ]);
-    }
+
 }
