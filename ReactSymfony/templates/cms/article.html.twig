@@ -1,11 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{controller_name}}{% endblock %}
+{% block title %}{{controller_route}}{% endblock %}
 
 {% block body %}
 
 
-    <a href="{{ path('app_home') }}" class="btn btn-primary">HOME</a>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div {{ react_component('App', { 'username': app.user.username, 'connected': true, 'route':controller_route}) }}></div>
+    {% else %}
+        <div {{ react_component('App', { 'username': '', 'connected': false}) }}></div>
+    {% endif %}
+
+    
 
 
 {% endblock %}

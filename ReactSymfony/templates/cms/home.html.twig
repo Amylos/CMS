@@ -1,17 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{controller_name}}{% endblock %}
+{% block title %}{{controller_route}}{% endblock %}
 
 {% block body %}
 
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <div {{ react_component('App', { 'username': app.user.username, 'connected': true}) }}></div>
+        <div {{ react_component('App', { 'username': app.user.username, 'connected': true, 'route':controller_route}) }}></div>
     {% else %}
         <div {{ react_component('App', { 'username': '', 'connected': false}) }}></div>
     {% endif %}
-        {# {% for key, user in users %}
-                {{dump(user)}}
-        {% endfor %} #}
+
 
 
 {% endblock %}

@@ -50,3 +50,49 @@
 }
 
 
+
+
+/***********************/
+/*********MAKER*********/
+/***********************/
+
+.Maker{
+    width: 100vw;
+    height: 95vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2%;
+}
+
+
+/***********************/
+/*******ToolBox*********/
+/***********************/
+
+.ToolBox{
+    height: 96%;
+    width: 20%;
+    background-color: lightblue;
+}
+
+/***********************/
+/********Shape**********/
+/***********************/
+
+.Shape{
+    height: 96%;
+    width: 50%;
+    background-color: lightblue;
+}
+
+/***********************/
+/*******Custom*********/
+/***********************/
+
+.Custom{
+    height: 96%;
+    width: 20%;
+    background-color: lightblue;
+}
+

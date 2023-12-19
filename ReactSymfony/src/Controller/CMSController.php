@@ -20,7 +20,7 @@ class CMSController extends AbstractController
     public function index(): Response
     {
         return $this->render('cms/root.html.twig', [
-            'controller_name' => 'app',
+            'controller_route' => 'app',
         ]);
     }
 
@@ -46,16 +46,18 @@ class CMSController extends AbstractController
         // $jsonUsers = json_encode($usersArray);
 
         return $this->render('cms/home.html.twig', [
-            'controller_name' => 'app_home',
-            // 'users' =>  $jsonUsers
+            'controller_route' => 'app_home',
+            'users' =>  $users
         ]);
     }
 
     #[Route('/article', name: 'app_article')]
     public function build(): Response
     {
+        $users = $this->userRepository->findAllUsers();
+
         return $this->render('cms/article.html.twig', [
-            'controller_name' => 'app_article',
+            'controller_route' => 'app_article',
         ]);
     }
 
