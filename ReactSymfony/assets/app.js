@@ -13,4 +13,3 @@ import './styles/component.css';
 
 
 registerReactControllerComponents(require.context('./react/controllers', true, /\.(j|t)sx?$/));
-// registerReactControllerComponents(require.context('./react/controllers/Test', true, /\.(j|t)sx?$/));
