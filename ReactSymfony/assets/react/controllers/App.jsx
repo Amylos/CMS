@@ -2,7 +2,6 @@ import React from 'react';
 import { useState } from 'react';
 
 import NavBar from './NavBar';
-import SideBar from './SideBar';
 import Content from './Content';
 import Maker from './Maker';
 

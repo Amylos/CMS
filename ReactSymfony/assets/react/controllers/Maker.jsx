@@ -7,10 +7,16 @@ import Custom from "./Custom";
 
 
 const Maker = () => {
+
+    const [type,setType] = useState(null);
+
+
+
+
     return (
         <div className="Maker">
-            <ToolBox/>
-            <Shape/>
+            <ToolBox setType = {setType}/>
+            <Shape type = {type}/>
             <Custom/>
         </div>
       );
