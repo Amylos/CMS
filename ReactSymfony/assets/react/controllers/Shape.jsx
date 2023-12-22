@@ -17,14 +17,14 @@ const Shape = (props) => {
     <div className='Shape'>
       {
         props.titleBtn == true ?
-          <BlocTitle Handle = {HandleChangeTitle}/>
+          <BlocTitle Handle = {HandleChangeTitle} data = {props}/>
         :
           null
       }
 
       {
         props.textBtn == true ?
-        <BlocText Handle = {HandleChangeText}/>
+        <BlocText Handle = {HandleChangeText} data = {props}/>
       :
         null
       }
@@ -56,7 +56,7 @@ const Shape = (props) => {
 const BlocTitle = (props) => {
   return (
     <div>
-      <input type='text' style={{ color: 'blue', fontFamily: 'Arial' }} placeholder='title' onChange={props.Handle}></input>
+      <input type='text' style={{ color: props.data.titleColor, fontFamily: props.data.titleFontFamily }} placeholder='title' onChange={props.Handle}></input>
     </div>
   );
 };
@@ -65,7 +65,7 @@ const BlocTitle = (props) => {
 const BlocText = (props) => {
   return (
     <div>
-        <input type='text' placeholder='text' onChange={props.Handle}></input>
+        <input type='text' style={{ color: props.data.textColor, fontFamily: props.data.textFontFamily }} placeholder='text' onChange={props.Handle}></input>
     </div>
   );
 };

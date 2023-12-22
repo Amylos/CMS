@@ -6,14 +6,15 @@ import Content from './Content';
 import Maker from './Maker';
 
 const App = (props) => {
-
+    console.log(props);
     function Display(){
+        
         switch(props.route){
             case 'app_home':
                 return(
                     <>
                         <NavBar username = {props.username}/>
-                        <Content connected = {props.connected} />
+                        <Content connected = {props.connected} id = {props.id} />
                     </>
                 )
                 break;

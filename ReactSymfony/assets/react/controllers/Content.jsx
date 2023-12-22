@@ -68,7 +68,7 @@ const Content = (props) => {
                     return (
                         <>
                             <SideBar setContent ={setContent}/>
-                            <Users/>
+                            <Users id = {props.id}/>
                         </>
                     )
                     break;

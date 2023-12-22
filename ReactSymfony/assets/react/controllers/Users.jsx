@@ -1,67 +1,77 @@
 import React, { useState, useEffect } from 'react';
 
 const Users = (props) => {
-
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Set loading to true when starting the fetch
         setLoading(true);
-
-        // Make a GET request to your API endpoint
-        const response = await fetch('http://localhost:8000/api/users?page=1');
-
-        // Check if the request was successful (status code 200)
+        const response = await fetch('http://localhost:8000/api/users');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-
-        // Parse the JSON data from the response
         const result = await response.json();
-
-        // Update the state with the fetched data
         setData(result['hydra:member']);
-
-
       } catch (error) {
-        // If an error occurs, update the state with the error information
         setError(error);
       } finally {
-        // Set loading to false after the request is complete, regardless of success or failure
         setLoading(false);
       }
     };
-        // Call the fetchData function when the component mounts
-        fetchData();
-    }, []); // The empty dependency array ensures that this effect runs once when the component mounts
 
-    // Render based on the loading and error states
-    if (loading) {
-      return <p>Loading...</p>;
-    }
+    fetchData();
+  }, [reload]);
 
-    if (error) {
-      return <p>Error: {error.message}</p>;
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
+
+  const handleUpdate = (id) => {
+    console.log(id);
+    // Add logic for updating user with the specified id
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:8000/api/users/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        console.log('User deleted successfully');
+        setReload(!reload); // Toggle reload to trigger a refetch
+      } else {
+        console.error('Failed to delete user');
+      }
+    } catch (error) {
+      console.error('Error occurred while deleting user:', error);
     }
+  };
 
   return (
-        <div className='Users'>
-          <ul>
-            {
-              data.map(user => (
-                <li>{user.username} {user.lastName}{user.firstName} {user.mail}</li>
-              ))
-            }
-
-          </ul>
-
-        </div>
-      );
-}
+    <div className="Users">
+      <ul>
+        {data.map((user) => (
+          <li key={user.id}>
+            {user.username} {user.lastName} {user.firstName} {user.mail}
+            <a href={`/user/edit/${user.id}`}> Update</a>
+            <button onClick={() => handleDelete(user.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 export default Users;

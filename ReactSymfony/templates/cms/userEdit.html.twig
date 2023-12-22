@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Creating form{% endblock %}
+
+{% block body %}
+
+<div>
+    <a href="{{ path('app_home') }}" class="btn btn-primary">home</a>
+    {{ form(crea_form) }}
+
+</div>
+
+
+{% endblock %}

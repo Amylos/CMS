@@ -9,6 +9,9 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use ApiPlatform\Metadata\ApiResource;
 
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+
 #[ApiResource]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['username'], message: 'There is already an account with this username')]
@@ -19,15 +22,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ApiFilter(SearchFilter::class, strategy: 'partial')]
     #[ORM\Column(length: 180, unique: true)]
     private ?string $username = null;
-    
+
+    #[ApiFilter(SearchFilter::class, strategy: 'partial')]
     #[ORM\Column(length: 180, unique: true)]
     private ?string $firstName = null;
 
+    #[ApiFilter(SearchFilter::class, strategy: 'partial')]
     #[ORM\Column(length: 180, unique: true)]
     private ?string $lastName = null;
 
+    #[ApiFilter(SearchFilter::class, strategy: 'partial')]
     #[ORM\Column(length: 180, unique: true)]
     private ?string $mail = null;
 

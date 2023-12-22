@@ -5,7 +5,7 @@
 {% block body %}
 
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <div {{ react_component('App', { 'username': app.user.username, 'connected': true, 'route':controller_route}) }}></div>
+        <div {{ react_component('App', { 'username': app.user.username, 'id': user.id, 'connected': true, 'route':controller_route}) }}></div>
     {% else %}
         <div {{ react_component('App', { 'username': '', 'connected': false, 'route':controller_route}) }}></div>
     {% endif %}
