@@ -13,16 +13,16 @@ const App = (props) => {
             case 'app_home':
                 return(
                     <>
-                        <NavBar username = {props.username}/>
-                        <Content connected = {props.connected} id = {props.id} />
+                        <NavBar connected = {props.connected} username = {props.username}/>
+                        <Content connected = {props.connected} id = {props.id} username = {props.username}/>
                     </>
                 )
                 break;
             case 'app_article':
                 return(
                     <>
-                        <NavBar username = {props.username}/>
-                        <Maker/>
+                        <NavBar connected = {props.connected} username = {props.username}/>
+                        <Maker id = {props.id} username = {props.username}/>
                     </>
                 )
                 break;

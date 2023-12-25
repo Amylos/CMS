@@ -42,6 +42,7 @@ const Shape = (props) => {
       :
         null
       }
+      <button onClick={props.HandlePublish}>Publish</button>
     </div>
   );
 };

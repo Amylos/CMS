@@ -36,7 +36,7 @@ const Content = (props) => {
                         return (
                             <>
                                 <SideBar setContent ={setContent}/>
-                                <Article/>
+                                <Article data = {props}/>
                             </>
                         )
                     break;
@@ -44,7 +44,7 @@ const Content = (props) => {
                     return (
                         <>
                             <SideBar setContent ={setContent}/>
-                            <Data/>
+                            <Data data = {props}/>
                         </>
                     )
                     break;
@@ -52,7 +52,7 @@ const Content = (props) => {
                     return (
                         <>
                             <SideBar setContent ={setContent}/>
-                            <Media/>
+                            <Media data = {props}/>
                         </>
                     )
                     break;
@@ -60,7 +60,7 @@ const Content = (props) => {
                     return (
                         <>
                             <SideBar setContent ={setContent}/>
-                            <Theme/>
+                            <Theme data = {props}/>
                         </>
                     )
                     break;
