@@ -6,7 +6,7 @@ import Content from './Content';
 import Maker from './Maker';
 
 const App = (props) => {
-    console.log(props);
+    console.log('App props : ',props);
     function Display(){
         
         switch(props.route){

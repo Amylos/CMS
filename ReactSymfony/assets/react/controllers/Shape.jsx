@@ -10,7 +10,7 @@ const Shape = (props) => {
   }
 
   function HandleChangeText(e){
-    props.setTitle(e.target.value);
+    props.setText(e.target.value);
   }
 
   return (

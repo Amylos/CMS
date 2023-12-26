@@ -6,6 +6,8 @@ namespace App\DataFixtures;
 use Faker\Factory;
 use App\Entity\Article;
 use App\Entity\User;
+use App\Entity\Bloc;
+
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\String\Slugger\SluggerInterface;
@@ -63,14 +65,22 @@ class AppFixtures extends Fixture
             $article[$i] = new Article();
             $article[$i]->setTitle("Title : " . $i);
             $article[$i]->setUser($userAdmin);
-
-            // $user[$i]->setCreatedAt();
-            // $user[$i]->setUpdatedAt();
             $article[$i]->setResume("Resume : " . $i);
 
-            // setUser
             $manager->persist($article[$i]);
             $manager->flush();
+
+            for($k = 0; $k<1;$k++){
+                $Bloc[$k] = new Bloc();
+                $Bloc[$k]->setBlocType('BlocType');
+                $Bloc[$k]->setTitle('title');
+                $Bloc[$k]->setText('text');
+                $Bloc[$k]->setArticles($article[$i]);
+
+                $manager->persist($Bloc[$k]);
+                $manager->flush();
+            }
+
         }
 
         $manager->flush();

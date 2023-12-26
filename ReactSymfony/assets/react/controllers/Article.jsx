@@ -50,11 +50,10 @@ const Article = (props) => {
         <div className='Article'>
             Article
             <a href="/article" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">+</a>
-            <p>Connected as : {props.data.username}</p>
             {data.map((article) => (
           <li key={article.id}>
             {article.user_id} {article.title} {article.resume}
-            
+
           </li>
         ))}
         </div>

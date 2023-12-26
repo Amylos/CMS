@@ -78,12 +78,15 @@ class CMSController extends AbstractController
     }
 
     #[Route('/article', name: 'app_article')]
-    public function build(): Response
+    public function build(Security $security): Response
     {
-        $users = $this->userRepository->findAllUsers();
+        $user = $security->getUser();
+        if(!$user) $user = null;
+
 
         return $this->render('cms/article.html.twig', [
             'controller_route' => 'app_article',
+            'user' => $user
         ]);
     }
 
