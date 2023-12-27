@@ -29,6 +29,9 @@ class Bloc
     #[ORM\JoinColumn(nullable: false)]
     private ?Article $articles = null;
 
+    #[ORM\Column]
+    private ?int $article_id = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -78,6 +81,18 @@ class Bloc
     public function setArticles(?Article $articles): static
     {
         $this->articles = $articles;
+
+        return $this;
+    }
+
+    public function getArticleId(): ?int
+    {
+        return $this->article_id;
+    }
+
+    public function setArticleId(int $article_id): static
+    {
+        $this->article_id = $article_id;
 
         return $this;
     }

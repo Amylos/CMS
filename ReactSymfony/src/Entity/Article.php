@@ -34,13 +34,19 @@ class Article
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+    #[ORM\Column]
+    private ?int $user_id = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $owner = null;
+
     // #[ORM\OneToMany(mappedBy: 'articles', targetEntity: Bloc::class, orphanRemoval: true)]
     // private Collection $blocs;
 
-    public function __construct()
-    {
-        $this->blocs = new ArrayCollection();
-    }
+    // public function __construct()
+    // {
+    //     $this->blocs = new ArrayCollection();
+    // }
 
     public function getId(): ?int
     {
@@ -136,4 +142,28 @@ class Article
 
     //     return $this;
     // }
+
+    public function getUserId(): ?int
+    {
+        return $this->user_id;
+    }
+
+    public function setUserId(int $user_id): static
+    {
+        $this->user_id = $user_id;
+
+        return $this;
+    }
+
+    public function getOwner(): ?string
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(string $owner): static
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
 }

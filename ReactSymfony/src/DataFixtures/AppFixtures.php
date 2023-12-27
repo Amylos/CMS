@@ -66,6 +66,9 @@ class AppFixtures extends Fixture
             $article[$i]->setTitle("Title : " . $i);
             $article[$i]->setUser($userAdmin);
             $article[$i]->setResume("Resume : " . $i);
+            $article[$i]->setUserId($userAdmin->getId());
+            $article[$i]->setOwner($userAdmin->getUsername());
+
 
             $manager->persist($article[$i]);
             $manager->flush();
@@ -76,6 +79,7 @@ class AppFixtures extends Fixture
                 $Bloc[$k]->setTitle('title');
                 $Bloc[$k]->setText('text');
                 $Bloc[$k]->setArticles($article[$i]);
+                $Bloc[$k]->setArticleId($article[$i]->getId());
 
                 $manager->persist($Bloc[$k]);
                 $manager->flush();

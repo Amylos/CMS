@@ -90,5 +90,58 @@ class CMSController extends AbstractController
         ]);
     }
 
+    #[Route('/article/edit/{id}', name: 'app_article_edit', methods:['GET','POST'])]
+    public function ArticleEdit(Request $request, int $id, UserRepository $repository, EntityManagerInterface $entityManager)
+    {
+        // $user = $repository->findOneBy(['id' => $id]);
+
+        // $crea_form = $this->createForm(UserFormType::class,$user,['method' => 'POST', 'submit label' => 'Enregistrer les modifications']);
+
+        // $crea_form->handleRequest($request);
+
+        // if ($user != null) {
+        //     if ($crea_form->isSubmitted() && $crea_form->isValid()) {
+        //         $entityManager->persist($user);
+        //         $entityManager->flush();
+
+        //         $this->addFlash('success', 'Votre ingrédient a bien été modifié avec succès !');
+        //         return $this->redirectToRoute('app_home');
+        //     }
+        // }
+
+        // return $this->render('cms/userEdit.html.twig',[
+        //     'crea_form' => $crea_form->createView()
+        // ]);
+    }
+
+    
+
+    // #[Route('/article/delete/{id}',name :'ingredient.delete',methods:['GET'])]
+    // public function ArticleDelete(int $id,IngredientRepository $repository,EntityManagerInterface $entity_manager){
+
+
+    //     $ingredient = $repository->findOneBy(['id' => $id]);
+    //     $entity_manager->remove($ingredient);
+    //     $entity_manager->flush();
+
+    //     $this->addFlash('success','Votre ingrédient a été détruit avec succès');
+
+    //     return $this->redirectToRoute('ingredient.index');
+    // }
+
+
+    // #[Route('/article/delete/{id}',name :'ingredient.delete',methods:['GET'])]
+    // public function BlocDelete(int $id,IngredientRepository $repository,EntityManagerInterface $entity_manager){
+
+
+    //     $ingredient = $repository->findOneBy(['id' => $id]);
+    //     $entity_manager->remove($ingredient);
+    //     $entity_manager->flush();
+
+    //     $this->addFlash('success','Votre ingrédient a été détruit avec succès');
+
+    //     return $this->redirectToRoute('ingredient.index');
+    // }
+
 
 }

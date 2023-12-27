@@ -65,14 +65,16 @@ const Maker = (props) => {
                         updated_at: currentDate,
                         resume: 'resume',
                         user: `/api/users/${props.id}`,
+                        user_id: props.id,
+                        owner : props.username,
                     }),
                 });
-    
+
                 if (responseArticle.ok) {
                     console.log('Article created successfully');
                     const responseData = await responseArticle.json();
                     const newArticleId = responseData.id;
-    
+
                     console.log('Article created successfully with ID:', newArticleId);
                     // setNewArticleId(newArticleId);
 
@@ -108,6 +110,7 @@ const Maker = (props) => {
                         blocType: 'title',
                         title: title,
                         articles: `/api/articles/${ArticleId}`,
+                        article_id: ArticleId
                     }),
                 });
     
@@ -137,6 +140,7 @@ const Maker = (props) => {
                         blocType: 'text',
                         text: text,
                         articles: `/api/articles/${ArticleId}`,
+                        article_id: ArticleId
                     }),
                 });
 

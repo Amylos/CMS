@@ -1,63 +1,102 @@
 import React, { useState, useEffect } from 'react';
 
 const Article = (props) => {
+    console.log('Article props : ', props);
+  const [dataArticle, setDataArticle] = useState(null);
+  const [dataBlocs, setDataBlocs] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [reload, setReload] = useState(false);
 
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [reload, setReload] = useState(false);
-    console.log(props)
-
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          setLoading(true);
-          const response = await fetch('http://localhost:8000/api/articles');
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          const result = await response.json();
-          setData(result['hydra:member']);
-        } catch (error) {
-          setError(error);
-        } finally {
-          setLoading(false);
+  useEffect(() => {
+    const fetchDataArticles = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('http://localhost:8000/api/articles');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
         }
-      };
-
-      fetchData();
-    }, [reload]);
-  
-    if (loading) {
-      return <p>Loading...</p>;
-    }
-  
-    if (error) {
-      return <p>Error: {error.message}</p>;
-    }
-  
-    const handleUpdate = (id) => {
-      console.log(id);
-      // Add logic for updating user with the specified id
+        const result = await response.json();
+        setDataArticle(result['hydra:member']);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
     };
 
+    const fetchDataBlocs = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('http://localhost:8000/api/blocs');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const result = await response.json();
+        setDataBlocs(result['hydra:member']);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    fetchDataArticles();
+    fetchDataBlocs();
+  }, [reload]);
 
+  useEffect(() => {
+    if (dataArticle) {
+      console.log('Data Article:', dataArticle);
+    }
+  }, [dataArticle]);
 
+  useEffect(() => {
+    if (dataBlocs) {
+      console.log('Data Blocs:', dataBlocs);
+    }
+  }, [dataBlocs]);
 
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
-    return (
-        <div className='Article'>
-            Article
-            <a href="/article" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">+</a>
-            {data.map((article) => (
-          <li key={article.id}>
-            {article.user_id} {article.title} {article.resume}
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
 
-          </li>
-        ))}
+  return (
+    <div className='ArticleComponent'>
+      <a href="/article" className=" articleAdd bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">+</a>
+            {dataArticle && dataArticle.map((article) => (
+            <div className='article' key={article.id}>
+               ArticleID :  {article.id} UserId : {article.userId} Rédigé par : {article.owner}
+
+               {dataBlocs && dataBlocs.map((bloc) => (
+                <>
+                {
+                    bloc.articleId == article.id ?
+                    <li key={bloc.id}>
+                        BlocId : {bloc.id} articleID :  {bloc.articleId} {bloc.title} {bloc.text}
+                    </li>
+                    : null
+                }
+                </>
+                ))}
+                  { props.data.id ?
+                      props.data.id == article.userId ?
+                          <>
+                              <button>Update</button>
+                              <button>Delete</button>
+                          </>
+                      :null
+                : null
+
+                }
         </div>
-    );
-}
+            ))}
+      </div>
+  );
+};
 
 export default Article;
