@@ -7,6 +7,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UserRepository;
+use App\Repository\ArticleRepository;
+use App\Repository\BlocRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use App\Form\ArticleType;
+
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -67,7 +72,7 @@ class CMSController extends AbstractController
                 $entityManager->persist($user);
                 $entityManager->flush();
 
-                $this->addFlash('success', 'Votre ingrédient a bien été modifié avec succès !');
+                $this->addFlash('success', 'Votre user a bien été modifié avec succès !');
                 return $this->redirectToRoute('app_home');
             }
         }
@@ -83,65 +88,91 @@ class CMSController extends AbstractController
         $user = $security->getUser();
         if(!$user) $user = null;
 
-
         return $this->render('cms/article.html.twig', [
             'controller_route' => 'app_article',
             'user' => $user
         ]);
     }
 
-    #[Route('/article/edit/{id}', name: 'app_article_edit', methods:['GET','POST'])]
-    public function ArticleEdit(Request $request, int $id, UserRepository $repository, EntityManagerInterface $entityManager)
+
+    // ADD TO UPDATE BLOCS
+    // #[Route('/article/edit/{id}', name: 'app_article_edit', methods:['GET','POST'])]
+    // public function ArticleEdit(Request $request, int $id, ArticleRepository $articleRepository,BlocRepository $blocRepository, EntityManagerInterface $entityManager)
+    // {
+    //     $article = $articleRepository->findOneBy(['id' => $id]);
+    //     $blocs = $blocRepository->findBy(['id' => $id]);
+
+    //     if (!$article) {
+    //         throw $this->createNotFoundException('Article not found');
+    //     }
+
+    //     $originalBlocs = new ArrayCollection();
+    //     dd($originalBlocs);
+
+    //     // Store the original blocs to check for removal later
+    //     foreach ($article->getBlocs() as $bloc) {
+    //         $originalBlocs->add($bloc);
+    //     }
+
+
+    //     $crea_form = $this->createForm(UserFormType::class,$article,['method' => 'POST', 'submit label' => 'Enregistrer les modifications']);
+
+    //     $crea_form->handleRequest($request);
+
+    //     if ($article != null) {
+    //         if ($crea_form->isSubmitted() && $crea_form->isValid()) {
+    //             $entityManager->persist($article);
+    //             $entityManager->flush();
+
+    //             $this->addFlash('success', 'Votre article a bien été modifié avec succès !');
+    //             return $this->redirectToRoute('app_home');
+    //         }
+    //     }
+
+    //     return $this->render('cms/articleEdit.html.twig',[
+    //         'crea_form' => $crea_form->createView()
+    //     ]);
+    // }
+
+
+
+
+    #[Route('/article/edit/{id}', name: 'app_article_edit', methods: ['GET', 'POST'])]
+    public function articleEdit(Request $request, int $id, ArticleRepository $articleRepository, EntityManagerInterface $entityManager)
     {
-        // $user = $repository->findOneBy(['id' => $id]);
+        $article = $articleRepository->find($id);
 
-        // $crea_form = $this->createForm(UserFormType::class,$user,['method' => 'POST', 'submit label' => 'Enregistrer les modifications']);
+        if (!$article) {
+            throw $this->createNotFoundException('Article not found');
+        }
 
-        // $crea_form->handleRequest($request);
+        $originalBlocs = new ArrayCollection();
 
-        // if ($user != null) {
-        //     if ($crea_form->isSubmitted() && $crea_form->isValid()) {
-        //         $entityManager->persist($user);
-        //         $entityManager->flush();
+        // Store the original blocs to check for removal later
+        foreach ($article->getBlocs() as $bloc) {
+            $originalBlocs->add($bloc);
+        }
 
-        //         $this->addFlash('success', 'Votre ingrédient a bien été modifié avec succès !');
-        //         return $this->redirectToRoute('app_home');
-        //     }
-        // }
+        $form = $this->createForm(ArticleType::class, $article);
+        $form->handleRequest($request);
 
-        // return $this->render('cms/userEdit.html.twig',[
-        //     'crea_form' => $crea_form->createView()
-        // ]);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Remove blocs that were removed in the form
+            foreach ($originalBlocs as $bloc) {
+                if (!$article->getBlocs()->contains($bloc)) {
+                    $entityManager->remove($bloc);
+                }
+            }
+
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Your article has been successfully updated!');
+            return $this->redirectToRoute('app_home');
+        }
+
+        return $this->render('cms/articleEdit.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
-
-    
-
-    // #[Route('/article/delete/{id}',name :'ingredient.delete',methods:['GET'])]
-    // public function ArticleDelete(int $id,IngredientRepository $repository,EntityManagerInterface $entity_manager){
-
-
-    //     $ingredient = $repository->findOneBy(['id' => $id]);
-    //     $entity_manager->remove($ingredient);
-    //     $entity_manager->flush();
-
-    //     $this->addFlash('success','Votre ingrédient a été détruit avec succès');
-
-    //     return $this->redirectToRoute('ingredient.index');
-    // }
-
-
-    // #[Route('/article/delete/{id}',name :'ingredient.delete',methods:['GET'])]
-    // public function BlocDelete(int $id,IngredientRepository $repository,EntityManagerInterface $entity_manager){
-
-
-    //     $ingredient = $repository->findOneBy(['id' => $id]);
-    //     $entity_manager->remove($ingredient);
-    //     $entity_manager->flush();
-
-    //     $this->addFlash('success','Votre ingrédient a été détruit avec succès');
-
-    //     return $this->redirectToRoute('ingredient.index');
-    // }
-
 
 }

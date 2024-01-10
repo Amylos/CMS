@@ -45,4 +45,14 @@ class BlocRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    public function findBlocsInArticle($id): array
+    {
+        return $this->createQueryBuilder('i')
+            ->where('i.article = :articleId')
+            ->setParameter('articleId', $id)
+            ->getQuery()
+            ->getResult();
+    }
+
 }

@@ -80,6 +80,7 @@ class AppFixtures extends Fixture
                 $Bloc[$k]->setText('text');
                 $Bloc[$k]->setArticles($article[$i]);
                 $Bloc[$k]->setArticleId($article[$i]->getId());
+                $article[$i]->addBloc( $Bloc[$k]);
 
                 $manager->persist($Bloc[$k]);
                 $manager->flush();

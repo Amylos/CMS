@@ -7,6 +7,7 @@ use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
+use App\Entity\Bloc;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
@@ -40,13 +41,16 @@ class Article
     #[ORM\Column(length: 255)]
     private ?string $owner = null;
 
-    // #[ORM\OneToMany(mappedBy: 'articles', targetEntity: Bloc::class, orphanRemoval: true)]
-    // private Collection $blocs;
+    /****/
+    #[ORM\OneToMany(mappedBy: 'articles', targetEntity: Bloc::class, orphanRemoval: true)]
+    private Collection $blocs;
 
-    // public function __construct()
-    // {
-    //     $this->blocs = new ArrayCollection();
-    // }
+    public function __construct()
+    {
+        $this->blocs = new ArrayCollection();
+    }
+
+    /****/
 
     public function getId(): ?int
     {
@@ -116,32 +120,32 @@ class Article
     // /**
     //  * @return Collection<int, Bloc>
     //  */
-    // public function getBlocs(): Collection
-    // {
-    //     return $this->blocs;
-    // }
+    public function getBlocs(): Collection
+    {
+        return $this->blocs;
+    }
 
-    // public function addBloc(Bloc $bloc): static
-    // {
-    //     if (!$this->blocs->contains($bloc)) {
-    //         $this->blocs->add($bloc);
-    //         $bloc->setArticles($this);
-    //     }
+    public function addBloc(Bloc $bloc): static
+    {
+        if (!$this->blocs->contains($bloc)) {
+            $this->blocs->add($bloc);
+            $bloc->setArticles($this);
+        }
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
-    // public function removeBloc(Bloc $bloc): static
-    // {
-    //     if ($this->blocs->removeElement($bloc)) {
-    //         // set the owning side to null (unless already changed)
-    //         if ($bloc->getArticles() === $this) {
-    //             $bloc->setArticles(null);
-    //         }
-    //     }
+    public function removeBloc(Bloc $bloc): static
+    {
+        if ($this->blocs->removeElement($bloc)) {
+            // set the owning side to null (unless already changed)
+            if ($bloc->getArticles() === $this) {
+                $bloc->setArticles(null);
+            }
+        }
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
     public function getUserId(): ?int
     {

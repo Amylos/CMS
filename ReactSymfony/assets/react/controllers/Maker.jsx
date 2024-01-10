@@ -63,7 +63,7 @@ const Maker = (props) => {
                         title: title,
                         created_at: currentDate,
                         updated_at: currentDate,
-                        resume: 'resume',
+                        resume: text,
                         user: `/api/users/${props.id}`,
                         user_id: props.id,
                         owner : props.username,

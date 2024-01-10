@@ -50,7 +50,7 @@ const Users = (props) => {
 
       if (response.ok) {
         console.log('User deleted successfully');
-        setReload(!reload); // Toggle reload to trigger a refetch
+        setReload(!reload);
       } else {
         console.error('Failed to delete user');
       }
