@@ -80,6 +80,7 @@ const Article = (props) => {
       if (response.ok) {
         console.log('Article deleted successfully');
         setReload(!reload);
+        setShowArticle(false);
       } else {
         console.error('Failed to delete article');
       }
@@ -90,23 +91,9 @@ const Article = (props) => {
 
 
   const HandleUpdate = async (id) => {
-    // try {
-    //   const response = await fetch(`http://localhost:8000/api/articles/${id}`, {
-    //     method: 'DELETE',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //   });
 
-    //   if (response.ok) {
-    //     console.log('Article deleted successfully');
-    //     setReload(!reload);
-    //   } else {
-    //     console.error('Failed to delete article');
-    //   }
-    // } catch (error) {
-    //   console.error('Error occurred while deleting article:', error);
-    // }
+
+
   };
 
 
@@ -140,7 +127,7 @@ const Article = (props) => {
               </button>
             ))}
         </>
-        :
+        : //HERE
         <div>
               <button onClick={() => HandleShow()}>Back</button>
               {dataArticle && dataArticle.map((article) => (

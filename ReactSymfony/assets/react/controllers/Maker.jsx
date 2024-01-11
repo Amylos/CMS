@@ -49,10 +49,10 @@ const Maker = (props) => {
     const HandlePublish = async (event) => {
         if (props.id) {
             event.preventDefault();
-    
+
             try {
                 const currentDate = new Date().toISOString();
-    
+
                 // Create Article
                 const responseArticle = await fetch('http://localhost:8000/api/articles', {
                     method: 'POST',
@@ -101,6 +101,7 @@ const Maker = (props) => {
         // Create Title Bloc
         if(title){
             try {
+                const currentDate = new Date().toISOString();
                 const response = await fetch('http://localhost:8000/api/blocs', {
                     method: 'POST',
                     headers: {
@@ -109,11 +110,13 @@ const Maker = (props) => {
                     body: JSON.stringify({
                         blocType: 'title',
                         title: title,
+                        created_at: currentDate,
+                        updated_at: currentDate,
                         articles: `/api/articles/${ArticleId}`,
                         article_id: ArticleId
                     }),
                 });
-    
+
                 if (response.ok) {
                     console.log('Bloc created successfully');
                 } else {
@@ -157,12 +160,10 @@ const Maker = (props) => {
 
         }
         else{
-            
+
         }
     }
-        
 
-       
 
 /************************************************************************************** */
 /************************************************************************************** */

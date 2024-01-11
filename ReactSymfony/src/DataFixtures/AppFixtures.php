@@ -7,6 +7,9 @@ use Faker\Factory;
 use App\Entity\Article;
 use App\Entity\User;
 use App\Entity\Bloc;
+use App\Entity\Image;
+
+
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -28,6 +31,7 @@ class AppFixtures extends Fixture
     {
 
         $faker_factory = Factory::create('fr_FR');
+
 
         /********************/
         /********USERS*******/
