@@ -1,0 +1,17 @@
+.NavBar {
+    padding: 30px;
+    width: auto;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.NavBar a {
+    /* Ajoutez d'autres styles au besoin */
+    margin: 0 10px; /* Ajustez la marge horizontale selon vos besoins */
+}
+
+/* Ajoutez d'autres styles au besoin */

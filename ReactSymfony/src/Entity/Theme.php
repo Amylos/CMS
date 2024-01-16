@@ -61,12 +61,15 @@ class Theme
 
     #[Vich\UploadableField(mapping: "theme", fileNameProperty: "filePath")]
     #[Assert\NotNull(groups: ['theme_create'])]
+    #[Groups(['theme:read'])]
     public ?File $file = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(['theme:read'])]
     public ?string $filePath = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(['theme:read'])]
     public ?string $blocID = null;
 
 

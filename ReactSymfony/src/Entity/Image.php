@@ -61,12 +61,16 @@ class Image
 
     #[Vich\UploadableField(mapping: "image", fileNameProperty: "filePath")]
     #[Assert\NotNull(groups: ['image_create'])]
+    #[Groups(['image:read'])]
     public ?File $file = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(['image:read'])]
+
     public ?string $filePath = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(['image:read'])]
     public ?string $blocID = null;
 
 

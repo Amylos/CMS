@@ -61,12 +61,15 @@ class DataCSV
 
     #[Vich\UploadableField(mapping: "dataCSV", fileNameProperty: "filePath")]
     #[Assert\NotNull(groups: ['dataCSV_create'])]
+    #[Groups(['dataCSV:read'])]
     public ?File $file = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(['dataCSV:read'])]
     public ?string $filePath = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(['dataCSV:read'])]
     public ?string $blocID = null;
 
 

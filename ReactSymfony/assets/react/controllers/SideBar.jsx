@@ -4,11 +4,11 @@ import React, { useState, useEffect } from 'react';
 const SideBar = (props) => {
     return (
         <div className='SideBar'>
-            <button onClick={ChangeContent} value={"Article"}>Article</button>
-            <button onClick={ChangeContent} value={"Data"}>Data</button>
-            <button onClick={ChangeContent} value={"Media"}>Media</button>
-            <button onClick={ChangeContent} value={"Theme"}>Theme</button>
-            <button onClick={ChangeContent} value={"Users"}>Users</button>
+            <button className="Sidebar__link" onClick={ChangeContent} value={"Article"}>Article</button>
+            <button className="Sidebar__link" onClick={ChangeContent} value={"Data"}>Data</button>
+            <button className="Sidebar__link" onClick={ChangeContent} value={"Media"}>Media</button>
+            <button className="Sidebar__link" onClick={ChangeContent} value={"Theme"}>Theme</button>
+            <button className="Sidebar__link" onClick={ChangeContent} value={"Users"}>Users</button>
         </div>
       );
 

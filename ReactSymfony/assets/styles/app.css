@@ -2,14 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;1,100&family=Urbanist:wght@100&display=swap');
 *{
-  border: 1px solid red;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
-
 html, body, #root{
     height: 100%;
     margin: 0;
+    padding: 0;
     overflow: hidden;
   }
 
@@ -18,7 +20,199 @@ html, body, #root{
   height: 100vh;
 }
 
+body{
+  background-color: #121928 ;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container{
+
+  width: 100%;
+  height: 100%;
+}
+.Registration__container{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 80px 100px 80px;
+  border-radius: 74px;
+  margin-bottom: 103px;
+}
+.Registeration__form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  color: #121928;
+  width: 700px;
+  height: 784px;
+  border-radius: 74px;
+
+  position: absolute;
+  left: 45px;
+  z-index: 10;
+}
+.social-links{
+  width: 61.5px;
+height: 60px;
+flex-shrink: 0;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+background-color: red;
+}
+
+
+
+.Registeration__title{
+ font-size: 85px;
+ font-weight: 800;
+}
+.Registeration__text{
+  font-size: 20px;
+  color: #000;
+  text-align: center;
+ }
+ .or{
+  margin-bottom: 20px;
+ } 
+.Registeration__social  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+.Registeration__social li  {
+  margin: 20px 36px;
+}
+
+.input-style {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  background-color: #F5F9FF;
+  margin-left: 20px;
+  margin-bottom: 14px;
+  color: #121928;
+  width: 100%;
+}
+
+.input-style .flex-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-style img {
+  margin: 0px 15px; /* Ajoutez une marge à l'image si nécessaire */
+}
+
+.input-field {
+  text-align: start;
+  width: 100%;
+  border: none; /* Pour supprimer la bordure de l'input si nécessaire */
+  background-color: #F5F9FF;
+  padding: 15px 200px 15px 0px;
+
+}
+.input-field::placeholder {
+  color: #121928;
+  font-weight: 300;
+}
+.placeholder {
+  font-size: 20px;
+  font-weight: 200;
+  width: 100%;
+  text-align: center;
+}
+
+/* .input{
+  width: auto%;
+  height: 100%;
+  background-color: #3b5284;
+} */
+
+.flex-container {
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+}
+
+.flex-container label {
+  margin-right: 5px; 
+}
+/* a{
+  font-size: 20px;
+  color: #fff;
+  background-color: #202A38;
+  border-radius: 23px;
+  padding: 10px 60px;
+} */
+
+
+.Registeration__form__redirection{
+  background-color: #202A38;
+  height: 788px;
+  width: 700px;
+  border-radius: 74px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+  left: 430px;
+  z-index: 0;
+
+}
+.Registeration__form__redirection__title{
+  font-size: 75px;
+  font-weight: 800;
+  color: white;
+}
+.Redirection__text{
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: white;
+}
 
 
 
 
+
+
+/* Les boutons  */
+
+.btn__SignIN{
+  text-align: center;
+  font-size: 25px;
+  font-weight: 800;
+  color: #fff;
+  padding: 4px 50px;
+  border-radius: 39px;
+  background-color: #121928;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+.btn__SignIN:hover{
+  color: #121928;
+
+  background-color: #fff;
+}
+
+.btn__SignUp{
+  font-size: 25px;
+  font-weight: 800;
+  color: #121212;
+  padding: 4px 50px;
+  border-radius: 39px;
+  background-color: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+.btn__SignUp:hover{
+  color: #fff;
+
+  background-color: #121212;
+}

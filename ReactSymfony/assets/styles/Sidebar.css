@@ -1,0 +1,22 @@
+.SideBar{
+    background-color: #121928;
+    width: 15%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-color:#202A38;
+    
+    
+}
+.Sidebar__link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px 60px;
+    margin-bottom: 80px;
+
+    color: #121928;  
+    background-color:#fff;
+    border-radius: 30px;
+}

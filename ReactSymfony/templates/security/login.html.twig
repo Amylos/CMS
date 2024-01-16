@@ -1,31 +1,83 @@
+
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Log in!
+{% endblock %}
 
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+	<form method="post">
+		{% if error %}
+			<div class="alert alert-danger">
+				{{ error.messageKey|trans(error.messageData, 'security') }}
+			</div>
+		{% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
-            <a href="{{ path('app_home') }}" class="btn btn-primary">home</a>
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputUsername">Username</label>
-    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-    <p>login.html.twig</p>
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+		{#
+		        {% if app.user %}
+		            <div class="mb-3">
+		                You are logged in as {{ app.user.userIdentifier }},
+		                <a href="{{ path('app_logout') }}">Logout</a>
+		            </div>
+		        {% endif %}
+		        #}
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-        <a href="{{ path('app_register') }}" class="btn btn-primary">create account</a>
+		<div class="container">
+			<a href="{{ path('app_home') }}">home</a>
+			<div class="Registration__container">
+				<div class="Registeration__form">
+					<div class="Registeration__header">
+						<h1 class="Registeration__title">Login to your account</h1>
+						<p class="Registeration__text">Sign in with your social account</p>
 
-</form>
+						<ul class="Registeration__social">
+							<li>
+								<a href="#"><img class="social-links" src="/public/images/linkedin.png"/></a>
+							</li>
+							<li>
+								<a href="#"><img class="social-links" src="/public/images/gmail.png"/></a>
+							</li>
+							<li>
+								<a href="#"><img class="social-links" src="/public/images/Facebook.png"/></a>
+							</li>
+						</ul>
+
+						<div>
+							<p>-------------- or --------------</p>
+						</div>
+					</div>
+
+					<div class="Login-input"></div>
+
+					<div class="input-style">
+						<label for="inputUsername">Username</label>
+						<input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus/>
+					</div>
+
+					<div class="input-style">
+						<label for="inputPassword">Password</label>
+						<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required/>
+					</div>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+					<div class="flex-container">
+						<button type="submit" class="btn__SignIN">Log-in</button>
+					</div>
+				</div>
+        </form>
+				<div class="Registeration__form__redirection">
+					<h1 class="Registeration__form__redirection__title">New Here !</h1>
+					<p class="Redirection__text">
+						Sign up and create your first
+						<br/>
+						article on GAP.
+					</p>
+					<button type="submit" class="btn__SignUp">
+						<a href="{{ path('app_register') }}" class="btn btn-primary">Sign IN</a>
+					</button>
+				</div>
+			</div>
+		</div>
+
+	<button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+	<a href="{{ path('app_register') }}" class="btn btn-primary">create account</a>
 {% endblock %}

@@ -1,0 +1,186 @@
+.Users {
+  flex-direction: column;
+    background: #eee;
+    color: black;
+    width: 100%;
+    height: auto;
+    margin: 0px 50px 50px 50px;
+    border-radius: 30px;
+    padding: 30px;
+    overflow-x: auto; /* Ajoutez ceci pour permettre le défilement horizontal si nécessaire */
+  }
+
+  .Header h1 {
+    font-family: Poppins;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.48px;
+    margin-bottom: 20px; /* Réduisez la marge pour rapprocher du titre suivant */
+  }
+  .Categories__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  th {
+    color: #B5B7C0;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.14px;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 150px; 
+  }
+  th:nth-child(2){
+    margin-right: 10px;
+  }
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 25px;
+    border-top: gainsboro solid 1px;
+  }
+  tr {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  th {
+    color: #B5B7C0;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.14px;
+    margin-bottom: 10px; /* Espace supplémentaire sous les titres */
+  }
+  
+  .btn__delete {
+    text-align: center;
+    margin-top: 10px; 
+    padding: 10px 50px;
+    background: #c5221f;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .btn__edit {
+    margin: 10px 20px 0px 0px; 
+    color: #fff;
+    padding: 10px 50px;
+    background: #121928;
+    text-align: center;
+  }
+  
+  .openModalBtn {
+    width: 200px;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+    background-color: cornflowerblue;
+    color: white;
+    cursor: pointer;
+  }
+
+/* ///////////////////////////////////////////////////////// */
+
+.modalBackground {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(163, 104, 104);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContainer {
+  width: 500px;
+  height: 500px;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.modalContainer .title {
+  display: inline-block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.titleCloseBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.titleCloseBtn button {
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.modalContainer .body {
+  flex: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+.modalContainer .footer {
+  flex: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContainer .footer button {
+  width: 150px;
+  height: 45px;
+  margin: 10px;
+  border: none;
+  background-color: cornflowerblue;
+  color: white;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#cancelBtn {
+  background-color: crimson;
+}
+
+
+
+.loader{
+  margin: 0 0 2em;
+  height: 100px;
+  width: 20%;
+  text-align: center;
+  padding: 1em;
+  margin: 0 auto 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+/*
+  Set the color of the icon
+*/
+svg path,
+svg rect{
+  fill: #FF6700;
+}

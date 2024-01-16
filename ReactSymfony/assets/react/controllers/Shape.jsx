@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import Chart from './Chart';
 
 
 
@@ -12,6 +12,18 @@ const Shape = (props) => {
   function HandleChangeText(e){
     props.setText(e.target.value);
   }
+
+
+  function HandleChangeImage(e){
+
+  }
+
+
+  function HandleChangeGraph(e){
+
+  }
+
+
 
   return (
     <div className='Shape'>
@@ -72,10 +84,13 @@ const BlocText = (props) => {
 };
 
 // Composant BlocImage
+
+
+
 const BlocImage = (props) => {
   return (
     <div>
-      BlocImage
+      <button onClick={fetchData}>fetch</button>
     </div>
   );
 };
@@ -84,7 +99,7 @@ const BlocImage = (props) => {
 const BlocGraph = (props) => {
   return (
     <div>
-      BlocGraph
+      <Chart/>
     </div>
   );
 };

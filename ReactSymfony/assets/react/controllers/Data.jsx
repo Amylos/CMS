@@ -31,6 +31,7 @@ const Data = (props) => {
             const response = await fetch('http://localhost:8000/api/data_csvs', {
                 method: 'POST',
                 body: formData,
+
             });
 
             const data = await response.json();
