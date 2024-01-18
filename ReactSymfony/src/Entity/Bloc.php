@@ -25,6 +25,7 @@ class Bloc
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $text = null;
 
+
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $created_at = null;
 
@@ -37,6 +38,9 @@ class Bloc
 
     #[ORM\Column]
     private ?int $article_id = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $imagePath = null;
 
     public function getId(): ?int
     {
@@ -78,6 +82,7 @@ class Bloc
 
         return $this;
     }
+
 
     public function getCreatedAt(): ?\DateTimeImmutable
     {
@@ -123,6 +128,18 @@ class Bloc
     public function setArticleId(int $article_id): static
     {
         $this->article_id = $article_id;
+
+        return $this;
+    }
+
+    public function getImagePath(): ?string
+    {
+        return $this->imagePath;
+    }
+
+    public function setImagePath(?string $imagePath): static
+    {
+        $this->imagePath = $imagePath;
 
         return $this;
     }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Papa from 'papaparse'; // Assurez-vous d'importer la bibliothèque PapaParse
 
-const BarChart = () => {
+const ChartDisplay = (props) => {
     // États pour gérer le fichier CSV, les données du graphique, le type de graphique, et la référence au graphique
     const [file, setFile] = useState(null);
     const [chartData, setChartData] = useState({});
@@ -9,9 +9,9 @@ const BarChart = () => {
     const chartRef = useRef(null);
 
     // Gère le changement de fichier
-    const handleFileChange = (event) => {
-        setFile(event.target.files[0]);
-    };
+    // const handleFileChange = (event) => {
+    //     setFile(event.target.files[0]);
+    // };
 
     // Gère le changement de type de graphique
     const handleChartTypeChange = (event) => {
@@ -83,4 +83,4 @@ const BarChart = () => {
     );
 };
 
-export default BarChart;
+export default ChartDisplay;

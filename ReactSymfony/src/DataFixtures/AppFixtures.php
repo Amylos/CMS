@@ -48,6 +48,8 @@ class AppFixtures extends Fixture
         $manager->persist($userAdmin);
         $manager->flush();
 
+        //SET ROLE
+
         for($i = 0; $i<10;$i++){
             $user[$i] = new User();
             $user[$i]->setmail($faker_factory->lastName() . $faker_factory->firstNameMale() . "@gmail.com" . $i);

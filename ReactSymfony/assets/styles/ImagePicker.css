@@ -1,0 +1,24 @@
+
+
+
+
+
+
+.ImagePicker{
+    background-color: rgb(202, 202, 224);
+    width: 40%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.ImagePicker button{
+    width: 100px;
+    height: 100px;
+}
+
+.ImagePicker img{
+    width: 100px;
+    height: 100px;
+}

@@ -7,12 +7,12 @@ const Theme = (props) => {
         const file = event.target.files[0];
 
         if (file) {
-            // Check if the selected file has a valid extension (.css)
-            if (file.name.endsWith('.css')) {
+            // Check if the selected file has a valid extension (.jpg or .jpeg)
+            if (file.name.endsWith('.jpg') || file.name.endsWith('.jpeg')) {
                 setSelectedFile(file);
                 console.log('Selected file:', file.name);
             } else {
-                console.error('Invalid file type. Please select a .css file.');
+                console.error('Invalid file type. Please select a .jpg or .jpeg file.');
             }
         }
     };
@@ -27,7 +27,7 @@ const Theme = (props) => {
         formData.append('file', selectedFile);
 
         try {
-            const response = await fetch('http://localhost:8000/api/themes', {
+            const response = await fetch('http://localhost:8000/api/data_images', {
                 method: 'POST',
                 body: formData,
             });
@@ -40,10 +40,9 @@ const Theme = (props) => {
             console.error('Error uploading file:', error);
         }
     };
-
     return (
-        <div className='Theme'>
-            <input type='file' accept='.css' onChange={handleFileChange} />
+        <div className='Data'>
+            <input type='file' accept='.jpg, .jpeg' onChange={handleFileChange} />
             {selectedFile && (
                 <>
                     <p>{selectedFile.name}</p>

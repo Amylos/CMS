@@ -66,7 +66,6 @@ class Image
 
     #[ORM\Column(nullable: true)]
     #[Groups(['image:read'])]
-
     public ?string $filePath = null;
 
     #[ORM\Column(nullable: true)]

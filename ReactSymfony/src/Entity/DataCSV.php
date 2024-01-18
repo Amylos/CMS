@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
-use App\Repository\ImageRepository;
+use App\Repository\DataCSVRepository;
 use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
@@ -17,9 +17,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[Vich\Uploadable]
-#[ORM\Entity(repositoryClass: ImageRepository::class)]
+#[ORM\Entity(repositoryClass: DataCSVRepository::class)]
 #[ApiResource(
-    normalizationContext: ['groups' => ['image:read']],
+    normalizationContext: ['groups' => ['dataCSV:read']],
     types: ['https://schema.org/MediaObject'],
     operations: [
         new Get(),

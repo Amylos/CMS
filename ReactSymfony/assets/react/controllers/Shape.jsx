@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Chart from './Chart';
 
 
-
 const Shape = (props) => {
 
   function HandleChangeTitle(e){
@@ -43,7 +42,7 @@ const Shape = (props) => {
 
       {
         props.imageBtn == true ?
-        <BlocImage/>
+        <BlocImage data = {props}/>
       :
         null
       }
@@ -90,7 +89,13 @@ const BlocText = (props) => {
 const BlocImage = (props) => {
   return (
     <div>
-      <button onClick={fetchData}>fetch</button>
+      BLocImage
+          {
+            props.data.image ?
+              <img src={`/media/images/${props.data.image}`} alt={`Image ${props.data.image}`} />
+            :
+              null
+          }
     </div>
   );
 };

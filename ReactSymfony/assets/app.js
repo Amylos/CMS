@@ -20,6 +20,7 @@ import './styles/Theme.css'
 import './styles/Article.css'
 import './styles/Data.css'
 import './styles/Dashboard.css'
+import './styles/ImagePicker.css'
 
 
 registerReactControllerComponents(require.context('./react/controllers', true, /\.(j|t)sx?$/));

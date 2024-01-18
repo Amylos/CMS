@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Shape from "./Shape";
 import ToolBox from "./ToolBox";
 import Custom from "./Custom";
-
+import ImagePicker from './ImagePicker';
+import DataPicker from './DataPicker';
 
 
 
@@ -20,6 +21,10 @@ const Maker = (props) => {
     const [image,setImage] = useState(null);
     const [graph,setGraph] = useState(null);
 
+    const [pickImage,setPickImage]= useState(false);
+    const [pickData,setPickData]= useState(false);
+
+
     const [titleColor,setTitleColor] = useState(null);
     const [titleFontFamily,setTitleFontFamily] = useState(null);
     const [textColor,setTextColor] = useState(null);
@@ -34,6 +39,8 @@ const Maker = (props) => {
         console.log('titleColor :', titleColor, 'textColor : ', textColor);
         console.log('titleFontFamily :', titleFontFamily, 'textFontFamily : ', textFontFamily);
         console.log('New Article ID : ', newArticleId);
+        console.log('Pick image : ', pickImage, 'Pick data : ', pickData);
+
         console.log('----------------------------------------------------------------');
 
         titleBtn == false ? setTitle(null) : null;   title == "" ?  setTitle(null) : null;
@@ -127,9 +134,7 @@ const Maker = (props) => {
                 console.error('Error creating bloc:', error);
             }
         }
-        else{
 
-        }
 
         if(text){
              // Create Text Bloc
@@ -156,12 +161,38 @@ const Maker = (props) => {
             } catch (error) {
                 console.error('Error creating bloc:', error);
             }
-
-
         }
-        else{
 
-        }
+
+        if(image){
+            // Create Image Bloc
+            try {
+               const response = await fetch('http://localhost:8000/api/blocs', {
+                   method: 'POST',
+                   headers: {
+                       'Content-Type': 'application/json',
+                   },
+                   body: JSON.stringify({
+                       blocType: 'image',
+                       imagePath: image,
+                       articles: `/api/articles/${ArticleId}`,
+                       article_id: ArticleId
+                   }),
+               });
+
+               if (response.ok) {
+                   console.log('Bloc created successfully');
+               } else {
+                   const errorData = await response.json(); // Parse the error response
+                   console.error('Failed to create bloc:', errorData);
+               }
+           } catch (error) {
+               console.error('Error creating bloc:', error);
+           }
+       }
+
+
+
     }
 
 
@@ -169,9 +200,31 @@ const Maker = (props) => {
 /************************************************************************************** */
     return (
         <div className="Maker">
-            <ToolBox setTitleBtn = {setTitleBtn} setTextBtn = {setTextBtn} setImageBtn = {setImageBtn} setGraphBtn = {setGraphBtn} titleBtn = {titleBtn} textBtn = {textBtn} imageBtn = {imageBtn} graphBtn = {graphBtn}/>
-            <Shape titleBtn = {titleBtn} textBtn = {textBtn} imageBtn = {imageBtn} graphBtn = {graphBtn} setTitle = {setTitle} setText = {setText} setImage = {setImage} setGraph = {setGraph} titleColor = {titleColor} textColor = {textColor} titleFontFamily = {titleFontFamily} textFontFamily = {textFontFamily} HandlePublish = {HandlePublish}/>
-            <Custom setTitleColor = {setTitleColor} setTitleFontFamily = {setTitleFontFamily} setTextColor = {setTextColor} setTextFontFamily = {setTextFontFamily} />
+            <ToolBox setTitleBtn = {setTitleBtn} setTextBtn = {setTextBtn} setImageBtn = {setImageBtn} setGraphBtn = {setGraphBtn} titleBtn = {titleBtn} textBtn = {textBtn} imageBtn = {imageBtn} graphBtn = {graphBtn} setPickImage = {setPickImage} pickImage = {pickImage}  setPickData = {setPickData} pickData = {pickData}/>
+            {
+                pickImage == false ?
+                <>
+                {
+                    pickData == false ?
+                    <>
+                        <Shape titleBtn = {titleBtn} textBtn = {textBtn} imageBtn = {imageBtn} graphBtn = {graphBtn} setTitle = {setTitle} setText = {setText} setImage = {setImage} setGraph = {setGraph} titleColor = {titleColor} textColor = {textColor} titleFontFamily = {titleFontFamily} textFontFamily = {textFontFamily} HandlePublish = {HandlePublish} image = {image} graph = {graph}  />
+                        <Custom setTitleColor = {setTitleColor} setTitleFontFamily = {setTitleFontFamily} setTextColor = {setTextColor} setTextFontFamily = {setTextFontFamily} />
+                    </>
+                    :
+                    <>
+                        <DataPicker setGraph = {setGraph}  setPickData = {setPickData}/>
+                        <Custom setTitleColor = {setTitleColor} setTitleFontFamily = {setTitleFontFamily} setTextColor = {setTextColor} setTextFontFamily = {setTextFontFamily} />
+                    </>
+                }
+
+                </>
+               :
+               <>
+                    <ImagePicker setImageBtn = {setImageBtn} setImage = {setImage} setPickImage = {setPickImage}/>
+                    <Custom setTitleColor = {setTitleColor} setTitleFontFamily = {setTitleFontFamily} setTextColor = {setTextColor} setTextFontFamily = {setTextFontFamily}/>
+                </>
+            }
+
         </div>
       );
 /**************************************************************************************/
