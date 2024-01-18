@@ -12,18 +12,6 @@ const Shape = (props) => {
     props.setText(e.target.value);
   }
 
-
-  function HandleChangeImage(e){
-
-  }
-
-
-  function HandleChangeGraph(e){
-
-  }
-
-
-
   return (
     <div className='Shape'>
       {
@@ -49,7 +37,7 @@ const Shape = (props) => {
 
       {
         props.graphBtn == true ?
-        <BlocGraph/>
+        <BlocGraph data = {props}/>
       :
         null
       }
@@ -59,7 +47,7 @@ const Shape = (props) => {
 };
 
 
-
+/************************************* */
 /************************************* */
 
 
@@ -83,9 +71,6 @@ const BlocText = (props) => {
 };
 
 // Composant BlocImage
-
-
-
 const BlocImage = (props) => {
   return (
     <div>
@@ -102,17 +87,15 @@ const BlocImage = (props) => {
 
 // Composant BlocGraph
 const BlocGraph = (props) => {
+  console.log("BlocGraph : ", props.data);
+
   return (
     <div>
-      <Chart/>
+      <Chart graph = {props.data.graph} setGraphType = {props.data.setGraphType}/>
     </div>
   );
 };
 
 /**************************** */
-
-
-
-
 
 export default Shape;

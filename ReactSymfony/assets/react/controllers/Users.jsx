@@ -41,6 +41,7 @@ const Users = (props) => {
       }
       const result = await response.json();
       setData(result["hydra:member"]);
+      console.log(result["hydra:member"]);
     } catch (error) {
       setError(error);
     } finally {
@@ -68,7 +69,7 @@ const Users = (props) => {
 
       if (response.ok) {
         console.log("User deleted successfully");
-        setReload(!reload); // Toggle reload to trigger a refetch
+        setReload(!reload); // Toggle
         setOpenModal(false);
       } else {
         console.error("Failed to delete user");
@@ -77,6 +78,37 @@ const Users = (props) => {
       console.error("Error occurred while deleting user:", error);
     }
   };
+
+
+
+
+  const handleUpdateRole = async (userId, newEmail) => {
+    try {
+      console.log('New Email:', newEmail);
+      const response = await fetch(`http://localhost:8000/api/users/${userId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          mail: newEmail, // Assuming 'mail' is the correct field for updating user email
+        }),
+      });
+  
+      if (response.ok) {
+        console.log("User email updated successfully");
+        setReload(!reload); // Toggle
+        setOpenModal(false);
+      } else {
+        console.error("Failed to update user email");
+      }
+    } catch (error) {
+      console.error("Error occurred while updating user email:", error);
+    }
+  };
+
+
 
   return (
     <div className="Users">
@@ -103,6 +135,16 @@ const Users = (props) => {
             <li key={user.id}>
               {user.username} {user.lastName} {user.firstName} {user.mail}
               <div>
+              <select
+                id="choices"
+                name="choices"
+                onChange={(event) => handleUpdateRole(user.id, event.target.value)}>
+                <option value="ROLE_ADMIN">ROLE_ADMIN</option>
+                <option value="ROLE_DESIGN">ROLE_DESIGN</option>
+                <option value="ROLE_FOURNISSEUR">ROLE_FOURNISSEUR</option>
+                <option value="ROLE_USER">ROLE_USER</option>
+              </select>
+
                 <a className="btn__edit" href={`/user/edit/${user.id}`}>
                   Edit
                 </a>

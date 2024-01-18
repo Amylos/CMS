@@ -25,7 +25,6 @@ class Bloc
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $text = null;
 
-
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $created_at = null;
 
@@ -41,6 +40,12 @@ class Bloc
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $imagePath = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $graphType = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $graphPath = null;
 
     public function getId(): ?int
     {
@@ -140,6 +145,30 @@ class Bloc
     public function setImagePath(?string $imagePath): static
     {
         $this->imagePath = $imagePath;
+
+        return $this;
+    }
+
+    public function getGraphType(): ?string
+    {
+        return $this->graphType;
+    }
+
+    public function setGraphType(?string $graphType): static
+    {
+        $this->graphType = $graphType;
+
+        return $this;
+    }
+
+    public function getGraphPath(): ?string
+    {
+        return $this->graphPath;
+    }
+
+    public function setGraphPath(?string $graphPath): static
+    {
+        $this->graphPath = $graphPath;
 
         return $this;
     }

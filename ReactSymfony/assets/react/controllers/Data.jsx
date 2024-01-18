@@ -12,7 +12,7 @@ const Data = (Data) => {
   useEffect(() => {
     const fetchCsvFiles = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/data_csvs', {
+        const response = await fetch('http://localhost:8000/api/data_c_s_vs', {
           method: 'GET',
           headers: {
             'Accept-Version': 'v1',
@@ -65,7 +65,7 @@ const Data = (Data) => {
     formData.append('file', selectedFile);
 
     try {
-      const response = await fetch('http://localhost:8000/api/data_csvs', {
+      const response = await fetch('http://localhost:8000/api/data_c_s_vs', {
         method: 'POST',
         body: formData,
       });

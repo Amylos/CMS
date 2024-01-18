@@ -10,7 +10,7 @@ const [error, setError] = useState(null);
 useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/data_csvs', {
+        const response = await fetch('http://localhost:8000/api/data_c_s_vs', {
           method: 'GET',
           headers: {
             'Accept-Version': 'v1',
@@ -49,13 +49,14 @@ useEffect(() => {
 
     return (
         <div className="DataPicker">
-          DAtapick
           <ul>
             {data ? (
                 data.map((data) => (
-                  <button key={data.id} onClick={() => HandleGetData(data.filePath)}>
-                    <li>{data.filePath}</li>
-                  </button>
+                    <li>
+                      <button key={data.id} onClick={() => HandleGetData(data.filePath)}>
+                        {data.filePath}
+                      </button>
+                    </li>
                 ))
             ) : null}
           </ul>

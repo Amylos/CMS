@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import ChartDisplay from './ChartDisplay';
+
 
 const Article = (props) => {
     console.log('Article props : ', props);
@@ -7,7 +9,9 @@ const Article = (props) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [reload, setReload] = useState(false);
+
   const [showArticle,setShowArticle] = useState(false);
+  const [showArticleOwner,setShowArticleOwner] = useState(null);
 
 
 
@@ -93,18 +97,17 @@ const Article = (props) => {
   };
 
 
-  const HandleUpdate = async (id) => {
-
-    console.log("HandleUpdate");
-
-  };
-
-
-
   function HandleShow(articleId){
     console.log('HandleShow : ', articleId);
-    showArticle == false ? setShowArticle(articleId) : setShowArticle(false);
+    showArticle == false ? setShowArticle(articleId) : setShowArticle(false)
   };
+
+  function HandleOwner(owner){
+    console.log('HandleOwner : ', owner);
+    showArticleOwner == null ? setShowArticleOwner(owner) : setShowArticleOwner(null);
+  };
+
+
 
   return (
     <div className='ArticleComponent'>
@@ -113,7 +116,7 @@ const Article = (props) => {
         <>
           <a href="/article" className=" articleAdd bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">+</a>
               {dataArticle && dataArticle.map((article) => (
-              <button className='article' key={article.id} onClick={() => HandleShow(article.id)}>
+              <button className='article' key={article.id} onClick={() =>{HandleShow(article.id); HandleOwner(article.owner)} }>
 
                 ArticleID :  {article.id} UserId : {article.userId} Rédigé par : {article.owner}
                 {dataBlocs && dataBlocs.map((bloc) => (
@@ -124,7 +127,7 @@ const Article = (props) => {
                           BlocId : {bloc.id} articleID :  {bloc.articleId} {bloc.title} {bloc.text}
                           {
                           bloc.imagePath ?
-                            <img src={`/media/images/${bloc.imagePath}`} alt={`Image ${bloc.imagePath}`} />
+                            // <img src={`/media/images/${bloc.imagePath}`} alt={`Image ${bloc.imagePath}`} />
                           :
                            null
                           }
@@ -136,27 +139,95 @@ const Article = (props) => {
               </button>
             ))}
         </>
-        : //HERE
-        <div>
-              <button style={{color:"blue"}} onClick={() => HandleShow()}>Back</button>
-              {dataArticle && dataArticle.map((article) => (
-              article.id == showArticle ?
-                <div className='article' key={article.id}>
-                   {article.title} <button onClick={() =>HandleUpdate()}>Update</button>
-                  {dataBlocs && dataBlocs.map((bloc) => (
+        : //HERE TO DISPLAY ONE ARTICLE
+        <>
+          <button style={{color:"blue"}} onClick={() => HandleShow()}>Back</button>
+          <ArticleDisplayed dataBlocs = {dataBlocs} articleID = {showArticle} owner = {showArticleOwner} HandleDelete = {HandleDelete}/>
+        </>
+      }
+    </div>
+  );
+};
+
+
+export default Article;
+
+
+const ArticleDisplayed = (props) => {
+
+  console.log('ArticleDisplayed : ', props);
+  return (
+      <div className='ArticleDisplayed' style={{color:"blue"}}>
+        {
+          props.dataBlocs.map((bloc)=>(
+            <div style={{color:"blue"}}>
+              {
+                bloc.articleId == props.articleID ?
+                  <div style={{color:"blue"}}>
+                  {
+                    bloc.blocType === "title" ?
+                    <div className='BlocTitle'>
+                        {bloc.title}
+                    </div>
+                    :
+                    bloc.blocType === "text" ?
+                    <div className='BlocText'>
+                        {bloc.text}
+                    </div>
+                    :
+                    bloc.blocType === "image" ?
+                    <div className='BLocImage'>
+                        <img src={`/media/images/${bloc.imagePath}`} alt={`Image ${bloc.imagePath}`}/>
+                    </div>
+                    :
+                    bloc.blocType === "graph" ?
+                    <div className='BLocGraph'>
+                        {bloc.graphPath}
+                        {bloc.graphType}
+                        <ChartDisplay graph = {bloc.graphPath} graphType = {bloc.graphType} />
+                    </div>
+                    : null
+                  }
+                  </div>
+                :
+                  null
+              }
+            </div>
+          ))
+        }
+        <p>Rédigé par : {props.owner}</p>
+      </div>
+    );
+}
+
+
+ {/* {dataArticle && dataArticle.map((article) => ( */}
+              {/* article.id == showArticle ? */}
+
+                {/* <div className='article' key={article.id}> */}
+
+
+                  {/* {dataBlocs && dataBlocs.map((bloc) => (
                   <>
                   {
                     bloc.articleId == showArticle ?
-                      <li key={bloc.id}>
-                          {
+                      <li key={bloc.id}> */}
+                          {/* {
                           bloc.imagePath ?
                             <img src={`/media/images/${bloc.imagePath}`} alt={`Image ${bloc.imagePath}`} />
                           :
                            null
-                          }
-                          {bloc.text}
+                          } */}
+                          {/* text : {bloc.text}
+                          bloc.graphPath : {bloc.graphPath} */}
+                          {/* {
+                          bloc.graphPath ?
+                            <img src={`/media/images/${bloc.imagePath}`} alt={`Image ${bloc.imagePath}`} />
+                          :
+                           null
+                          } */}
 
-                          bloc.imagePath
+                          {/* bloc.imagePath
                           <button onClick={() =>HandleUpdate()}>Update</button>
                       </li>
                     : null
@@ -168,18 +239,10 @@ const Article = (props) => {
                     <button onClick={ () => HandleDelete(showArticle)}>Delete</button>
                 </div>
               : null
-              ))}
-        </div>
-      }
-      </div>
-  );
-};
+                ))} */}
 
 
 
-
-
-export default Article;
 
 
 

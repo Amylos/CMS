@@ -20,10 +20,10 @@ const Maker = (props) => {
     const [resume,setResume] = useState(null);
     const [image,setImage] = useState(null);
     const [graph,setGraph] = useState(null);
+    const [graphType,setGraphType] = useState(null);
 
     const [pickImage,setPickImage]= useState(false);
     const [pickData,setPickData]= useState(false);
-
 
     const [titleColor,setTitleColor] = useState(null);
     const [titleFontFamily,setTitleFontFamily] = useState(null);
@@ -39,7 +39,7 @@ const Maker = (props) => {
         console.log('titleColor :', titleColor, 'textColor : ', textColor);
         console.log('titleFontFamily :', titleFontFamily, 'textFontFamily : ', textFontFamily);
         console.log('New Article ID : ', newArticleId);
-        console.log('Pick image : ', pickImage, 'Pick data : ', pickData);
+        console.log('Pick image : ', pickImage, 'Pick data : ', pickData, 'graphType : ', graphType);
 
         console.log('----------------------------------------------------------------');
 
@@ -48,7 +48,7 @@ const Maker = (props) => {
         imageBtn == image ? setImage(null) : null;
         graphBtn == false ? setGraph(null) : null;
 
-    },[titleBtn,textBtn,imageBtn,graphBtn,title,text,image,graph,titleColor,textColor,titleFontFamily,textFontFamily])
+    },[titleBtn,textBtn,imageBtn,graphBtn,title,text,image,graph,titleColor,textColor,titleFontFamily,textFontFamily,graph,graphType])
 
 /**************************************************************************************/
 /**************************************************************************************/
@@ -139,6 +139,7 @@ const Maker = (props) => {
         if(text){
              // Create Text Bloc
              try {
+                const currentDate = new Date().toISOString();
                 const response = await fetch('http://localhost:8000/api/blocs', {
                     method: 'POST',
                     headers: {
@@ -147,6 +148,8 @@ const Maker = (props) => {
                     body: JSON.stringify({
                         blocType: 'text',
                         text: text,
+                        created_at: currentDate,
+                        updated_at: currentDate,
                         articles: `/api/articles/${ArticleId}`,
                         article_id: ArticleId
                     }),
@@ -167,6 +170,7 @@ const Maker = (props) => {
         if(image){
             // Create Image Bloc
             try {
+                const currentDate = new Date().toISOString();
                const response = await fetch('http://localhost:8000/api/blocs', {
                    method: 'POST',
                    headers: {
@@ -175,6 +179,8 @@ const Maker = (props) => {
                    body: JSON.stringify({
                        blocType: 'image',
                        imagePath: image,
+                       created_at: currentDate,
+                       updated_at: currentDate,
                        articles: `/api/articles/${ArticleId}`,
                        article_id: ArticleId
                    }),
@@ -192,6 +198,38 @@ const Maker = (props) => {
        }
 
 
+        if(graph){
+        // Create graph Bloc
+            try {
+                const currentDate = new Date().toISOString();
+                const response = await fetch('http://localhost:8000/api/blocs', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        blocType: 'graph',
+                        imagePath: image,
+                        created_at: currentDate,
+                        updated_at: currentDate,
+                        graphPath : graph,
+                        graphType : graphType,
+                        articles: `/api/articles/${ArticleId}`,
+                        article_id: ArticleId
+                    }),
+                });
+
+                if (response.ok) {
+                    console.log('Bloc created successfully');
+                } else {
+                    const errorData = await response.json(); // Parse the error response
+                    console.error('Failed to create bloc:', errorData);
+                }
+            } catch (error) {
+                console.error('Error creating bloc:', error);
+            }
+        }
+
 
     }
 
@@ -207,7 +245,7 @@ const Maker = (props) => {
                 {
                     pickData == false ?
                     <>
-                        <Shape titleBtn = {titleBtn} textBtn = {textBtn} imageBtn = {imageBtn} graphBtn = {graphBtn} setTitle = {setTitle} setText = {setText} setImage = {setImage} setGraph = {setGraph} titleColor = {titleColor} textColor = {textColor} titleFontFamily = {titleFontFamily} textFontFamily = {textFontFamily} HandlePublish = {HandlePublish} image = {image} graph = {graph}  />
+                        <Shape titleBtn = {titleBtn} textBtn = {textBtn} imageBtn = {imageBtn} graphBtn = {graphBtn} setTitle = {setTitle} setText = {setText} setImage = {setImage} setGraph = {setGraph} titleColor = {titleColor} textColor = {textColor} titleFontFamily = {titleFontFamily} textFontFamily = {textFontFamily} HandlePublish = {HandlePublish} image = {image} graph = {graph} setGraphType = {setGraphType}  />
                         <Custom setTitleColor = {setTitleColor} setTitleFontFamily = {setTitleFontFamily} setTextColor = {setTextColor} setTextFontFamily = {setTextFontFamily} />
                     </>
                     :
@@ -216,7 +254,6 @@ const Maker = (props) => {
                         <Custom setTitleColor = {setTitleColor} setTitleFontFamily = {setTitleFontFamily} setTextColor = {setTextColor} setTextFontFamily = {setTextFontFamily} />
                     </>
                 }
-
                 </>
                :
                <>
@@ -224,7 +261,6 @@ const Maker = (props) => {
                     <Custom setTitleColor = {setTitleColor} setTitleFontFamily = {setTitleFontFamily} setTextColor = {setTextColor} setTextFontFamily = {setTextFontFamily}/>
                 </>
             }
-
         </div>
       );
 /**************************************************************************************/

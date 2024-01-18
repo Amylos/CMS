@@ -32,7 +32,15 @@ class AppFixtures extends Fixture
 
         $faker_factory = Factory::create('fr_FR');
 
+        // le visiteur qui ne peut que naviguer sur le site
+        // l'abonné qui peut naviguer et noter les différents blocs des articles
+        // l'auteur (narrateur) qui peut créer des articles (et ne modifier que ses propres articles)
+        // l'éditeur qui peut créer des articles et modifier les siens et ceux des autres
+        // le designeur qui peut proposer des modifications du thème des articles
+        // le fournisseur de données qui doit pouvoir inclure de nouveaux jeux de données (sous forme de CSV) dont il pourra s'assurer le chargement (sous forme d'un tableau) et que le système a bien identifié les variables et valeurs des tableaux fournis. Pour chaque variable, le fournisseur devra choisir si elle est catégorielle ou si elle est numérique
+        // L'administrateur qui peut faire toutes les fonctionnalités
 
+        
         /********************/
         /********USERS*******/
         /********************/
@@ -47,6 +55,29 @@ class AppFixtures extends Fixture
 
         $manager->persist($userAdmin);
         $manager->flush();
+
+        $userDesign = new User();
+        $userDesign->setmail("design");
+        $userDesign->setUsername("design");
+        $userDesign->setLastName("design");
+        $userDesign->setFirstName("design");
+        $userDesign->setRoles(array('ROLE_DESIGN'));
+        $userDesign->setPassword($this->hasher->hashPassword($userDesign, '1234'));
+
+        $manager->persist($userDesign);
+        $manager->flush();
+
+        $userFournisseur = new User();
+        $userFournisseur->setmail("fournisseur");
+        $userFournisseur->setUsername("fournisseur");
+        $userFournisseur->setLastName("fournisseur");
+        $userFournisseur->setFirstName("fournisseur");
+        $userFournisseur->setRoles(array('ROLE_FOURNISSEUR'));
+        $userFournisseur->setPassword($this->hasher->hashPassword($userFournisseur, '1234'));
+
+        $manager->persist($userFournisseur);
+        $manager->flush();
+
 
         //SET ROLE
 
