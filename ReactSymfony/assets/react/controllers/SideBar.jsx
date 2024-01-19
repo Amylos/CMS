@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 const SideBar = (props) => {
     return (
         <div className='SideBar'>
+            <button className="Sidebar__link" onClick={ChangeContent} value={"DashBoard"}>DashBoard</button>
             <button className="Sidebar__link" onClick={ChangeContent} value={"Article"}>Article</button>
             <button className="Sidebar__link" onClick={ChangeContent} value={"Data"}>Data</button>
             <button className="Sidebar__link" onClick={ChangeContent} value={"Media"}>Media</button>

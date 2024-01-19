@@ -34,7 +34,7 @@ const Maker = (props) => {
 
     useEffect(() =>{
         console.log('----------------------------------------------------------------');
-        console.log('title :', titleBtn, 'text : ', textBtn, 'image : ', imageBtn, 'graph : ', graphBtn);
+        console.log('titleBtn :', titleBtn, 'textBtn : ', textBtn, 'imageBtn : ', imageBtn, 'graphBtn : ', graphBtn);
         console.log('title :', title, 'text : ', text, 'image : ', image, 'graph : ', graph);
         console.log('titleColor :', titleColor, 'textColor : ', textColor);
         console.log('titleFontFamily :', titleFontFamily, 'textFontFamily : ', textFontFamily);

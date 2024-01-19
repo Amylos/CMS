@@ -78,31 +78,27 @@ const Media = (props) => {
   };
 
 
-  const HandleDelete = async (id,path) => {
-    // delete API
-    try {
-      const response = await fetch(`http://localhost:8000/api/images/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+  // const HandleDelete = async (id,path) => {
+  //   // delete API
+  //   try {
+  //     const response = await fetch(`http://localhost:8000/api/images/${id}`, {
+  //       method: "DELETE",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
 
-      if (response.ok) {
-        console.log("Image deleted successfully");
-        setReload(!reload); // Toggle reload to trigger a refetch
-        setOpenModal(false);
-      } else {
-        console.error("Failed to delete image");
-      }
-    } catch (error) {
-      console.error("Error occurred while deleting image:", error);
-    }
-
-    // delete from project
-
-
-  };
+  //     if (response.ok) {
+  //       console.log("Image deleted successfully");
+  //       setReload(!reload); // Toggle reload to trigger a refetch
+  //       setOpenModal(false);
+  //     } else {
+  //       console.error("Failed to delete image");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error occurred while deleting image:", error);
+  //   }
+  // };
 
 
 
@@ -121,7 +117,7 @@ const Media = (props) => {
           <div key={image.id}>
             <img src={`/media/images/${image.filePath}`} alt={`Image ${image.id}`} />
             <p>{image.filePath}</p>
-            <button onClick={() => HandleDelete(image.id,image.filePath)}>Delete</button>
+            {/* <button onClick={() => HandleDelete(image.id,image.filePath)}>Delete</button> */}
           </div>
         ))
       ) : null}

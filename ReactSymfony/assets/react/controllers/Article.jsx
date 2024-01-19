@@ -115,7 +115,7 @@ const Article = (props) => {
         showArticle == false ?
         <>
           <a href="/article" className=" articleAdd bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">+</a>
-              {dataArticle && dataArticle.map((article) => (
+              {dataArticle && dataBlocs && dataArticle.map((article) => (
               <button className='article' key={article.id} onClick={() =>{HandleShow(article.id); HandleOwner(article.owner)} }>
 
                 ArticleID :  {article.id} UserId : {article.userId} Rédigé par : {article.owner}
@@ -127,7 +127,7 @@ const Article = (props) => {
                           BlocId : {bloc.id} articleID :  {bloc.articleId} {bloc.title} {bloc.text}
                           {
                           bloc.imagePath ?
-                            // <img src={`/media/images/${bloc.imagePath}`} alt={`Image ${bloc.imagePath}`} />
+                            <img src={`/media/images/${bloc.imagePath}`} alt={`Image ${bloc.imagePath}`} />
                           :
                            null
                           }
@@ -141,6 +141,7 @@ const Article = (props) => {
         </>
         : //HERE TO DISPLAY ONE ARTICLE
         <>
+          <button style={{color:"blue"}} onClick={() => HandleDelete(showArticle)}>Delete</button>
           <button style={{color:"blue"}} onClick={() => HandleShow()}>Back</button>
           <ArticleDisplayed dataBlocs = {dataBlocs} articleID = {showArticle} owner = {showArticleOwner} HandleDelete = {HandleDelete}/>
         </>
@@ -159,6 +160,7 @@ const ArticleDisplayed = (props) => {
   return (
       <div className='ArticleDisplayed' style={{color:"blue"}}>
         {
+          props.dataBlocs ?
           props.dataBlocs.map((bloc)=>(
             <div style={{color:"blue"}}>
               {
@@ -194,6 +196,7 @@ const ArticleDisplayed = (props) => {
               }
             </div>
           ))
+          : null
         }
         <p>Rédigé par : {props.owner}</p>
       </div>

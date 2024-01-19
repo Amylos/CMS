@@ -11,8 +11,6 @@ const ToolBox = (props) => {
                 props.textBtn == true ? props.setTextBtn(false) : props.setTextBtn(true);
                 break;
             case 'image':
-                    // props.setPickImage(true); props.setPickData(false);
-
                    if(props.imageBtn == true){
                     props.setImageBtn(false);
                     props.setPickImage(false);
@@ -21,14 +19,19 @@ const ToolBox = (props) => {
                         props.setImageBtn(true);
                         props.setPickData(false);
                         props.setPickImage(true);
-
                     }
 
-                    // props.imageBtn == true ?  : props.setImageBtn(true);
                 break;
             case 'graph':
-                props.setPickData(true);  props.setPickImage(false);
-                props.graphBtn == true ? props.setGraphBtn(false) : props.setGraphBtn(true);
+                if(props.graphBtn == true){
+                    props.setGraphBtn(false);
+                    props.setPickData(false);
+                    }
+                    else{
+                        props.setGraphBtn(true);
+                        props.setPickData(true);
+                        props.setPickImage(false);
+                    }
                 break;
         }
     }
