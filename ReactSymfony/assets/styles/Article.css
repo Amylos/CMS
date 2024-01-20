@@ -1,10 +1,9 @@
-
-.Article{
+.Article {
     width: 100%;
     height: 100%;
 }
 
-.ArticleComponent{
+.Article__Component {
     width: 100%;
     height: 100%;
     margin: 0px 50px 50px 50px;
@@ -13,36 +12,50 @@
     flex-wrap: wrap;
     background-color: #fff;
     padding: 30px;
-    overflow-x: auto
+    overflow-x: auto;
 }
-.btn__article{
+
+.Article__Content {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    margin: auto; 
+    justify-content: center; 
+}
+
+.btn__article {
     margin-right: 80px;
     margin-bottom: 80px;
-
     display: flex;
     flex-direction: column;
 }
 
-.article{
+.article {
     background-color: rgb(26, 110, 138);
     width: 20vw;
     height: 20vh;
-    margin-right: 80px;
-    margin-bottom: 80px;
+    margin-right: 60px;
+    margin-bottom: 60px;
+    border-radius: 3px;
+    padding: 3px;
 }
-
-.articleAdd{
-    background-color: rgba(32,42,56, 1);
+.articleAdd {
+    background-color: rgba(32, 42, 56, 1);
     width: 20vw;
     height: 20vh;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: 900;
+    border-radius: 5px;
 }
-
-.plus{
+.plus {
     background-color: rgb(60, 80, 107);
     padding: 10px;
     border-radius: 100%;
+}
+
+.Article__layout{
+    display: flex;
+    flex-direction: column;
 }

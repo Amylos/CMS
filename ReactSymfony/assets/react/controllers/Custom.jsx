@@ -15,6 +15,7 @@ const Custom = (props) => {
 
     return (
         <div className="Custom">
+          <h1>Select your theme</h1>
             <button onClick={CustomTitle}>Custom Title</button>
             <button onClick={CustomText}>Custom Text</button>
 

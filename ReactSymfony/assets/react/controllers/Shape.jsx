@@ -55,7 +55,7 @@ const Shape = (props) => {
 // Composant BlocTitle
 const BlocTitle = (props) => {
   return (
-    <div>
+    <div className='BlocText'>
       <input type='text' style={{ color: props.data.titleColor, fontFamily: props.data.titleFontFamily }} placeholder='title' onChange={props.Handle}></input>
     </div>
   );
@@ -64,8 +64,8 @@ const BlocTitle = (props) => {
 // Composant BlocText
 const BlocText = (props) => {
   return (
-    <div>
-        <input type='text' style={{ color: props.data.textColor, fontFamily: props.data.textFontFamily }} placeholder='text' onChange={props.Handle}></input>
+    <div className='BlocText'>
+        <input type='text'  style={{ color: props.data.textColor, fontFamily: props.data.textFontFamily }} placeholder='text' onChange={props.Handle}></input>
     </div>
   );
 };
@@ -96,6 +96,5 @@ const BlocGraph = (props) => {
   );
 };
 
-/**************************** */
 
 export default Shape;

@@ -1,17 +1,45 @@
 .NavBar {
-    padding: 30px;
+    /* padding: 30px; */
     width: auto;
     height: 8vh;
+
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 0px 0px 23px 23px;
+    padding: 0 30px;
+}
+.NavBar__logo {
+    font-size: 40px;
+    margin: 0 10px;
+    color: #121928;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.NavBar__container{
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    text-align: center;
-    margin-bottom: 20px;
+   
 }
-
-.NavBar a {
-    /* Ajoutez d'autres styles au besoin */
-    margin: 0 10px; /* Ajustez la marge horizontale selon vos besoins */
+.Navbar__Connection{
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
-
-/* Ajoutez d'autres styles au besoin */
+.Navbar__logout{
+    color: #fff;
+    padding: 6px 12px;
+    background-color: #121928;
+    border-radius: 5px;
+    border: solid 1px #121928;
+}
+.Navbar__register{
+    color: #121928;
+    padding: 6px 12px;
+    background-color: #fff;
+    border-radius: 5px; 
+    border: solid 1px #121928;
+}

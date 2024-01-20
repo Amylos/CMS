@@ -1,7 +1,7 @@
 .DashBoard{
     width: 100%;
-    height: 100%;
-    margin: 0px 30px 30px 30px;
+    height: auto;
+    margin: 0px 50px 50px 50px;
     border-radius: 30px;
     color: black;
     background-color: #fff;

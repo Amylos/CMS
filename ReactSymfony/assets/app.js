@@ -9,7 +9,6 @@ import './bootstrap.js';
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
-import './styles/component.css';
 import './styles/Content.css'
 import './styles/Sidebar.css'
 import './styles/Navbar.css'
@@ -20,7 +19,10 @@ import './styles/Theme.css'
 import './styles/Article.css'
 import './styles/Data.css'
 import './styles/Dashboard.css'
-import './styles/ImagePicker.css'
+import './styles/Shape.css'
+import './styles/ToolBox.css'
+import './styles/Custom.css'
+import './styles/Maker.css'
 
 
 registerReactControllerComponents(require.context('./react/controllers', true, /\.(j|t)sx?$/));

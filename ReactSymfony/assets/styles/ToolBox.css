@@ -1,0 +1,34 @@
+.ToolBox{
+    height: 96%;
+    width: 20%;
+    background-color: #fff;
+    border-radius: 23px;
+    padding: 2rem;
+    color: #121928;
+}
+h1{
+    font-size: 40px;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 800;
+}
+li{
+    height: 3rem;
+}
+li button .btn{
+    height: 100%;
+    width: 100%;
+    font-weight: 700;
+}
+
+.ToolBox__Utilities:hover{
+    background-color: #121928;
+    color: #fff;
+}
+.ToolBox__Utilities-Delete{
+    background-color: #C5221F;
+    color: #fff;
+}
+.ToolBox__Utilities-Delete:hover{
+
+}

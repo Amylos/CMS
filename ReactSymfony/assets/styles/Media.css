@@ -1,10 +1,10 @@
 .Media {
-    background: #eee;
+    background: #fff;
     color: black;
     width: 100%;
     height: auto;
     margin: 0px 50px 50px 50px;
     border-radius: 30px;
     padding: 30px;
-    overflow-x: auto; /* Ajoutez ceci pour permettre le défilement horizontal si nécessaire */
+    overflow-x: auto; 
   }

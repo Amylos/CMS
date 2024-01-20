@@ -110,32 +110,27 @@ const Article = (props) => {
 
 
   return (
-    <div className='ArticleComponent'>
+    <div className='Article__Component'>
       {
         showArticle == false ?
         <>
-          <a href="/article" className=" articleAdd bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">+</a>
+          <a href="/article" className=" articleAdd hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">+</a>
               {dataArticle && dataBlocs && dataArticle.map((article) => (
               <button className='article' key={article.id} onClick={() =>{HandleShow(article.id); HandleOwner(article.owner)} }>
 
                 ArticleID :  {article.id} UserId : {article.userId} Rédigé par : {article.owner}
-                {dataBlocs && dataBlocs.map((bloc) => (
+                {dataBlocs &&
+                dataBlocs.map((bloc) => (
                   <>
-                  {
-                    bloc.articleId == article.id ?
-                      <li key={bloc.id}>
-                          BlocId : {bloc.id} articleID :  {bloc.articleId} {bloc.title} {bloc.text}
-                          {
-                          bloc.imagePath ?
-                            <img src={`/media/images/${bloc.imagePath}`} alt={`Image ${bloc.imagePath}`} />
-                          :
-                           null
-                          }
+                    {bloc.articleId == article.id ? (
+                      <li className="Article__layout " key={bloc.id}>
+                        {/* BlocId : {bloc.id} articleID :  {bloc.articleId} */}
+                        <h1> {bloc.title} </h1>
+                        <p>{bloc.text}</p>
                       </li>
-                    : null
-                  }
+                    ) : null}
                   </>
-                  ))}
+                ))}
               </button>
             ))}
         </>
@@ -155,8 +150,6 @@ export default Article;
 
 
 const ArticleDisplayed = (props) => {
-
-  console.log('ArticleDisplayed : ', props);
   return (
       <div className='ArticleDisplayed' style={{color:"blue"}}>
         {
