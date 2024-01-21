@@ -113,7 +113,7 @@ const Users = (props) => {
   return (
     <div className="Users">
       <div className="Header">
-        <h1> Users </h1>
+        <h1 className="Title"> Users </h1>
       </div>
 
       <div className="Categories__title">
@@ -132,7 +132,7 @@ const Users = (props) => {
       <ul>
         {data &&
           data.map((user) => (
-            <li key={user.id}>
+            <li className="User__info"key={user.id}>
               {user.username} {user.lastName} {user.firstName} {user.mail}
               <div>
               <select

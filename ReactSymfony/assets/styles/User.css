@@ -10,7 +10,7 @@
     overflow-x: auto; 
   }
   
-  .Header h1 {
+  .Title {
     font-family: Poppins;
     font-size: 48px;
     font-style: normal;
@@ -27,7 +27,7 @@
   .Categories__title tr {
  margin-right: 10px;
   }
-  th {
+  .Categories__title th {
     color: #B5B7C0;
     font-family: Poppins;
     font-size: 14px;
@@ -38,7 +38,7 @@
     text-align: center;
     width: 150px; 
   }
-  th:nth-child(2){
+  .Categories__title th:nth-child(2){
     margin-right: 10px;
   }
   ul {
@@ -47,7 +47,7 @@
     margin: 0;
   }
   
-  li {
+  .User__info {
     display: flex;
     justify-content: space-between;
     align-items: center;

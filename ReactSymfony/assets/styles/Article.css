@@ -1,18 +1,20 @@
 .Article {
     width: 100%;
     height: 100%;
+    
 }
 
 .Article__Component {
     width: 100%;
     height: 100%;
     margin: 0px 50px 50px 50px;
-    border-radius: 30px;
+    border-radius: 23px;
     display: flex;
     flex-wrap: wrap;
     background-color: #fff;
     padding: 30px;
-    overflow-x: auto;
+    overflow-x: hidden;
+  
 }
 
 .Article__Content {
@@ -31,14 +33,77 @@
 }
 
 .article {
-    background-color: rgb(26, 110, 138);
+    background: url(../../public/media/images/65a9597fda402_G0010370.JPG), lightgray 50% / cover no-repeat;
+    object-fit: cover;
+
     width: 20vw;
     height: 20vh;
     margin-right: 60px;
     margin-bottom: 60px;
-    border-radius: 3px;
+    border-radius: 23px;
     padding: 3px;
+
+    
+
 }
+.article:hover{
+    box-shadow: 5px 5px 8.1px 6px rgba(0, 0, 0, 0.25) inset;
+}
+.Article__layout{
+    height: 100%;
+}
+.Article__background{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+.Article__header{
+    z-index: 10;
+    width: 100%;
+    height: 70%;
+   
+    object-fit: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.Article__footer{
+    z-index: 10;
+    height: 30%;
+    width: 100%;
+    background-color: rgba(0,0,0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius:  0px 0px 23px 23px;
+    padding: 10px;
+}
+
+.Article__footer .Article__title{
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+}
+.Article__footer .Article__desc{
+    font-size: 10px;
+    margin: 0px;
+    padding: 0px;
+}
+.Article__footer .Article__author{
+    font-size: 8px;
+    margin: 0px;
+    
+}
+
+
+
+
+
+
+
+
 .articleAdd {
     background-color: rgba(32, 42, 56, 1);
     width: 20vw;
@@ -47,12 +112,15 @@
     justify-content: center;
     align-items: center;
     font-weight: 900;
-    border-radius: 5px;
+    border-radius: 23px;
+    margin-right: 60px;
+    font-size: 50px;
 }
 .plus {
     background-color: rgb(60, 80, 107);
     padding: 10px;
     border-radius: 100%;
+    font-size: larger;
 }
 
 .Article__layout{

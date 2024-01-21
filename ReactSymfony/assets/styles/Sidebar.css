@@ -26,9 +26,3 @@
     background-color:#fff;
     border: solid 1px #121928;
 }
-.Sidebar__link:first-child{
-    margin-top: 80px;
-}
-.Sidebar__link button span {
-  margin-right: 10px;
-}

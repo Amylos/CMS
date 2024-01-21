@@ -42,32 +42,32 @@ const ToolBox = (props) => {
             <ul>
                 {
                     props.titleBtn == true ?
-                        <li><button onClick={HandleChange} value={'title'}>Remove Title</button></li>
+                        <li className='list__utilities'><button className="btn ToolBox__Utilities-Delete" onClick={HandleChange} value={'title'}>Remove Title</button></li>
                     :
-                        <li><button onClick={HandleChange} value={'title'}>Add Title</button></li>
+                        <li className='list__utilities' ><button className="ToolBox__Utilities" onClick={HandleChange} value={'title'}>Add Title</button></li>
                 }
 
                 {
                     props.textBtn == true ?
-                        <li><button onClick={HandleChange} value={'text'}>Remove Text</button></li>
+                        <li className='list__utilities'><button className="btn ToolBox__Utilities-Delete" onClick={HandleChange} value={'text'}>Remove Text</button></li>
                     :
-                        <li><button onClick={HandleChange} value={'text'}>Add Text</button></li>
+                        <li className='list__utilities'><button className="ToolBox__Utilities" onClick={HandleChange} value={'text'}>Add Text</button></li>
                 }
 
                 {
                     props.imageBtn == true  ?
                     <>
-                        <li><button onClick={HandleChange} value={'image'}>Remove Image</button></li>
+                        <li className='list__utilities'><button className="btn ToolBox__Utilities-Delete" onClick={HandleChange} value={'image'}>Remove Image</button></li>
                     </>
                     :
-                        <li><button onClick={HandleChange} value={'image'}>Add Image</button></li>
+                        <li className='list__utilities'><button className="ToolBox__Utilities" onClick={HandleChange} value={'image'}>Add Image</button></li>
                 }
 
                 {
                     props.graphBtn == true ?
-                        <li><button onClick={HandleChange} value={'graph'}>Remove Graph</button></li>
+                        <li className='list__utilities'><button className="btn ToolBox__Utilities-Delete" onClick={HandleChange} value={'graph'}>Remove Graph</button></li>
                     :
-                        <li><button onClick={HandleChange} value={'graph'}>Add Graph</button></li>
+                        <li className='list__utilities'><button className="ToolBox__Utilities" onClick={HandleChange} value={'graph'}>Add Graph</button></li>
                 }
             </ul>
         </div>

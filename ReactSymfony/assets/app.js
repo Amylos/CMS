@@ -23,6 +23,7 @@ import './styles/Shape.css'
 import './styles/ToolBox.css'
 import './styles/Custom.css'
 import './styles/Maker.css'
-
+import './styles/ImagePicker.css'
+import './styles/DataPicker.css'
 
 registerReactControllerComponents(require.context('./react/controllers', true, /\.(j|t)sx?$/));

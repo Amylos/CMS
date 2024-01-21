@@ -1,0 +1,16 @@
+.DataPicker {
+    height: 96%;
+    width: 50%;
+    background-color: #fff;
+    border-radius: 23px;
+    padding: 30px;
+    color: #121928;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+.Dataicker button{
+    width: 100px;
+    height: 100px;
+}

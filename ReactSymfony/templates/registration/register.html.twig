@@ -65,21 +65,21 @@
 				<div class="input-style">
 					<div class="flex-container">
 						<img src="/public/images/User-circle-2.png">
-						{{ form_label(registrationForm.firstName, null, {'label_attr': {'class': 'placeholder', 'style':'color: #121928'}}) }}
+						{# {{ form_label(registrationForm.firstName, null, {'label_attr': {'class': 'placeholder', 'style':'color: #121928'}}) }} #}
 						{{ form_widget(registrationForm.firstName, {'attr': {'class': 'input-field'}}) }}
 					</div>
 				</div>
 				<div class="input-style">
 					<div class="flex-container">
 						<img src="/public/images/User-circle-2.png">
-						{{ form_label(registrationForm.lastName, null, {'label_attr': {'class': 'placeholder', 'style':'color: #121928'}}) }}
+						{# {{ form_label(registrationForm.lastName, null, {'label_attr': {'class': 'placeholder', 'style':'color: #121928'}}) }} #}
 						{{ form_widget(registrationForm.lastName, {'attr': {'class': 'input-field'}}) }}
 					</div>
 				</div>
 				<div class="input-style">
 					<div class="flex-container">
 						<img  src="/public/images/User-circle-2.png">
-						{{ form_label(registrationForm.mail, null, {'label_attr': {'class': 'placeholder', 'style':'color: #121928'}}) }}
+						{# {{ form_label(registrationForm.mail, null, {'label_attr': {'class': 'placeholder', 'style':'color: #121928'}}) }} #}
 						{{ form_widget(registrationForm.mail, {'attr': {'class': 'input-field'}}) }}
 					</div>
 				</div>
@@ -87,7 +87,8 @@
 				<div class="input-style">
 					<div class="flex-container">
 						<img src="/public/images/User-circle-2.png">
-						{{ form_label(registrationForm.username, null, {'label_attr': {'class': 'placeholder', 'style':'color: #121928'}}) }}
+						{{ form_label(registrationForm.username, null, {'class': 'placeholder', 'style': 'color: #121928'}) }}
+
 						{{ form_widget(registrationForm.username, {'attr': {'class': 'input-field'}}) }}
 					</div>
 				</div>

@@ -42,6 +42,7 @@ const Theme = (props) => {
     };
     return (
         <div className='Data'>
+            <h1 className="Title"> Themes </h1>
             <input type='file' accept='.jpg, .jpeg' onChange={handleFileChange} />
             {selectedFile && (
                 <>

@@ -104,6 +104,7 @@ const Data = (Data) => {
   /***************RETURN***************** */
   return (
     <div className='Data'>
+      <h1 className="Title"> Data </h1>
       <input type='file' accept='.csv' onChange={handleFileChange} />
       {selectedFile && (
         <>
