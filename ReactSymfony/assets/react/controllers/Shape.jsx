@@ -56,16 +56,28 @@ const Shape = (props) => {
 const BlocTitle = (props) => {
   return (
     <div className='BlocText'>
-      <input type='text' style={{ color: props.data.titleColor, fontFamily: props.data.titleFontFamily }} placeholder='title' onChange={props.Handle}></input>
+      {
+        props.data.title ?
+        <input type='text' value={props.data.title} style={{ color: props.data.titleColor, fontFamily: props.data.titleFontFamily }} placeholder='title' onChange={props.Handle}></input>
+        :
+        <input type='text' style={{ color: props.data.titleColor, fontFamily: props.data.titleFontFamily }} placeholder='title' onChange={props.Handle}></input>
+      }
     </div>
   );
 };
 
 // Composant BlocText
 const BlocText = (props) => {
+  console.log('BLoc : ',props.data.text);
   return (
     <div className='BlocText'>
-        <input type='text'  style={{ color: props.data.textColor, fontFamily: props.data.textFontFamily }} placeholder='text' onChange={props.Handle}></input>
+    {
+      props.data.text ?
+      <input type='text' value={props.data.text}  style={{ color: props.data.textColor, fontFamily: props.data.textFontFamily }} placeholder='text' onChange={props.Handle}></input>
+      :
+      <input type='text'  style={{ color: props.data.textColor, fontFamily: props.data.textFontFamily }} placeholder='text' onChange={props.Handle}></input>
+
+    }
     </div>
   );
 };

@@ -77,7 +77,7 @@ const Content = (props) => {
         else{
             return (
                 <>
-                    <Article data = {props}/>
+                    <Article data = {props} role = {props.role}/>
                 </>
             )
         }

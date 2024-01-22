@@ -63,7 +63,7 @@ const Article = (props) => {
   }, [dataBlocs]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <div className="Article__Component">Loading...</div>;
   }
 
   if (error) {
@@ -107,12 +107,11 @@ const Article = (props) => {
     <div className="Article__Component">
       {showArticle == false ? (
         <>
-          <a
-            href="/article"
-            className=" articleAdd hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            +
-          </a>
+        {
+          props.data.role ?
+            <a href="/article" className=" articleAdd hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> + </a>
+          : null
+        }
           {dataArticle &&
             dataBlocs &&
             dataArticle.map((article) => (
@@ -129,21 +128,20 @@ const Article = (props) => {
                     <>
                       {bloc.articleId == article.id ? (
                         <li className="Article__layout " key={bloc.id}>
-                          {/* BlocId : {bloc.id} articleID :  {bloc.articleId} */}
                           <div className="Article__background">
-                            <img
-                              className=""
-                              src={`/media/images/${bloc.imagePath}`}
-                            />
+                          {
+                            bloc.imagePath ?
+                              <img className="" src={`/media/images/${bloc.imagePath}`}/>
+                            : null
+                          }
                           </div>
-
-                          <div className="Article__header"></div>
+                          <div className="Article__header">
+                          {/*  */}
+                          </div>
                           <div className="Article__footer">
                             <h1 className="Article__title"> {bloc.title} </h1>
                             <p className="Article__desc">{bloc.text}</p>
-                            <p className="Article__author">
-                              Rédigé par : {article.owner}
-                            </p>
+                            <p className="Article__author"> Rédigé par : {article.owner}</p>
                           </div>
                         </li>
                       ) : null}

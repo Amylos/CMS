@@ -126,10 +126,7 @@ const Media = (props) => {
         {images
           ? images.map((image) => (
               <div className="galery__list "key={image.id}>
-                <img
-                  src={`/media/images/${image.filePath}`}
-                  alt={`Image ${image.id}`}
-                />
+                <img className="ImageSelect" src={`/media/images/${image.filePath}`} alt={`Image ${image.id}`}/>
                 {/* <button onClick={() => HandleDelete(image.id,image.filePath)}>Delete</button> */}
               </div>
             ))

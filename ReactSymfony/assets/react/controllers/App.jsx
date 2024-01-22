@@ -8,13 +8,13 @@ import Maker from './Maker';
 const App = (props) => {
     console.log('App props : ',props);
     function Display(){
-        
+
         switch(props.route){
             case 'app_home':
                 return(
                     <>
                         <NavBar connected = {props.connected} username = {props.username}/>
-                        <Content connected = {props.connected} id = {props.id} username = {props.username}/>
+                        <Content connected = {props.connected} id = {props.id} username = {props.username} role = {props.role}/>
                     </>
                 )
                 break;
