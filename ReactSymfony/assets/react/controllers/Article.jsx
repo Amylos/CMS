@@ -177,48 +177,52 @@ const Article = (props) => {
 };
 
 export default Article;
-
 const ArticleDisplayed = (props) => {
   return (
-    <div className="ArticleDisplayed">
-      {props.dataBlocs
-        ? props.dataBlocs.map((bloc) => (
-            <React.Fragment key={bloc.id}>
-              <div className="article" style={{ color: "blue" }}>
-                {bloc.articleId == props.articleID ? (
-                  <div className="Article__layout">
-                    {bloc.blocType === "title" ? (
-                      <div className="Article__title">{bloc.title}</div>
-                    ) : bloc.blocType === "text" ? (
-                      <div className="Article__desc">{bloc.text}</div>
-                    ) : bloc.blocType === "image" ? (
-                      <div className="BLocImage">
-                        <img
-                          src={`/media/images/${bloc.imagePath}`}
-                          alt={`Image ${bloc.imagePath}`}
-                        />
-                      </div>
-                    ) : bloc.blocType === "graph" ? (
-                      <div className="BLocGraph">
+      <div className='ArticleDisplayed' style={{color:"blue"}}>
+        {
+          props.dataBlocs ?
+          props.dataBlocs.map((bloc)=>(
+            <div style={{color:"blue"}}>
+              {
+                bloc.articleId == props.articleID ?
+                  <div style={{color:"blue"}}>
+                  {
+                    bloc.blocType === "title" ?
+                    <div className='BlocTitle'>
+                        {bloc.title}
+                    </div>
+                    :
+                    bloc.blocType === "text" ?
+                    <div className='BlocText'>
+                        {bloc.text}
+                    </div>
+                    :
+                    bloc.blocType === "image" ?
+                    <div className='BLocImage'>
+                        <img src={`/media/images/${bloc.imagePath}`} alt={`Image ${bloc.imagePath}`}/>
+                    </div>
+                    :
+                    bloc.blocType === "graph" ?
+                    <div className='BLocGraph'>
                         {bloc.graphPath}
                         {bloc.graphType}
-                        <ChartDisplay
-                          graph={bloc.graphPath}
-                          graphType={bloc.graphType}
-                        />
-                      </div>
-                    ) : null}
+                        <ChartDisplay graph = {bloc.graphPath} graphType = {bloc.graphType} />
+                    </div>
+                    : null
+                  }
                   </div>
-                ) : null}
-              </div>
-              </React.Fragment>
+                :
+                  null
+              }
+            </div>
           ))
-        : null}
-      <p className="Article__author">Rédigé par : {props.owner}</p>
-    </div>
-  );
-};
-
+          : null
+        }
+        <p>Rédigé par : {props.owner}</p>
+      </div>
+    );
+} 
 {
   /* {dataArticle && dataArticle.map((article) => ( */
 }

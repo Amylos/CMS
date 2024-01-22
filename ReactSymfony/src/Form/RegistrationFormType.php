@@ -52,8 +52,9 @@ class RegistrationFormType extends AbstractType
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
+                
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
+                'attr' => ['autocomplete' => 'new-password', 'placeholder' => 'Password', 'class' => 'input-style'],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',

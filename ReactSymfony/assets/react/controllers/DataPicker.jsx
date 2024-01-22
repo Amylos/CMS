@@ -10,7 +10,7 @@ const [error, setError] = useState(null);
 useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/data_c_s_vs', {
+        const response = await fetch('http://localhost:8000/api/data_csvs', {
           method: 'GET',
           headers: {
             'Accept-Version': 'v1',
