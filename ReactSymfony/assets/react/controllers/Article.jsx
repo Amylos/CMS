@@ -136,7 +136,6 @@ const Article = (props) => {
                           }
                           </div>
                           <div className="Article__header">
-                          {/*  */}
                           </div>
                           <div className="Article__footer">
                             <h1 className="Article__title"> {bloc.title} </h1>

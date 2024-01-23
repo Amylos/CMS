@@ -1,5 +1,13 @@
 import React, { useState,useEffect } from 'react';
 
+
+// const [titleColor,setTitleColor] = useState(null);
+// const [titleFontFamily,setTitleFontFamily] = useState(null);
+// const [textColor,setTextColor] = useState(null);
+// const [textFontFamily,setTextFontFamily] = useState(null);
+
+
+
 const Theme = (props) => {
     return (
         <div className='Theme'>
@@ -28,11 +36,11 @@ const VueTheme = () => {
 }
 
 
-
 const MakeTheme = () => {
     return (
         <div className='MakeTheme'>
             <ColorPick/>
+            <ColorPickBack/>
             <FontFamilyPick/>
             <FontWeightSelector/>
         </div>
@@ -62,6 +70,29 @@ const ColorPick = (props) => {
       </div>
     );
   };
+
+
+  /************************************** */
+
+const ColorPickBack = (props) => {
+  const [selectedHexColor, setSelectedHexColor] = useState('#000000');
+
+  const handleColorChange = (event) => {
+    const newHexColor = event.target.value;
+    setSelectedHexColor(newHexColor);
+    props.color(newHexColor);
+  };
+
+  return (
+    <div className="ColorPick">
+      ColorPick
+      <input type="color" id="colorPicker" onChange={handleColorChange} value={selectedHexColor} />
+      <div id="selectedColor">
+        Selected Color: <span id="colorValue">{selectedHexColor}</span>
+      </div>
+    </div>
+  );
+};
 
 /***************************** */
   const FontFamilyPick = (props) => {

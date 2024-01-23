@@ -75,8 +75,7 @@ const BlocText = (props) => {
       props.data.text ?
       <input type='text' value={props.data.text}  style={{ color: props.data.textColor, fontFamily: props.data.textFontFamily }} placeholder='text' onChange={props.Handle}></input>
       :
-      <input type='text'  style={{ color: props.data.textColor, fontFamily: props.data.textFontFamily }} placeholder='text' onChange={props.Handle}></input>
-
+      <input type='text' style={{ color: props.data.textColor, fontFamily: props.data.textFontFamily }} placeholder='text' onChange={props.Handle}></input>
     }
     </div>
   );
@@ -86,7 +85,6 @@ const BlocText = (props) => {
 const BlocImage = (props) => {
   return (
     <div>
-      BLocImage
           {
             props.data.image ?
               <img src={`/media/images/${props.data.image}`} alt={`Image ${props.data.image}`} />

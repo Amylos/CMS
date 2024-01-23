@@ -25,19 +25,12 @@ const Maker = (props) => {
     const [pickImage,setPickImage]= useState(false);
     const [pickData,setPickData]= useState(false);
 
-    const [titleColor,setTitleColor] = useState(null);
-    const [titleFontFamily,setTitleFontFamily] = useState(null);
-    const [textColor,setTextColor] = useState(null);
-    const [textFontFamily,setTextFontFamily] = useState(null);
-
     const [newArticleId, setNewArticleId] =  useState(null);
 
     useEffect(() =>{
         console.log('----------------------------------------------------------------');
         console.log('titleBtn :', titleBtn, 'textBtn : ', textBtn, 'imageBtn : ', imageBtn, 'graphBtn : ', graphBtn);
         console.log('title :', title, 'text : ', text, 'image : ', image, 'graph : ', graph);
-        console.log('titleColor :', titleColor, 'textColor : ', textColor);
-        console.log('titleFontFamily :', titleFontFamily, 'textFontFamily : ', textFontFamily);
         console.log('New Article ID : ', newArticleId);
         console.log('Pick image : ', pickImage, 'Pick data : ', pickData, 'graphType : ', graphType);
 
@@ -48,7 +41,7 @@ const Maker = (props) => {
         imageBtn == image ? setImage(null) : null;
         graphBtn == false ? setGraph(null) : null;
 
-    },[titleBtn,textBtn,imageBtn,graphBtn,title,text,image,graph,titleColor,textColor,titleFontFamily,textFontFamily,graph,graphType])
+    },[titleBtn,textBtn,imageBtn,graphBtn,title,text,image,graph,graph,graphType])
 
 /**************************************************************************************/
 /**************************************************************************************/
@@ -245,20 +238,20 @@ const Maker = (props) => {
                 {
                     pickData == false ?
                     <>
-                        <Shape titleBtn = {titleBtn} textBtn = {textBtn} imageBtn = {imageBtn} graphBtn = {graphBtn} setTitle = {setTitle} setText = {setText} setImage = {setImage} setGraph = {setGraph} titleColor = {titleColor} textColor = {textColor} titleFontFamily = {titleFontFamily} textFontFamily = {textFontFamily} HandlePublish = {HandlePublish} image = {image} graph = {graph} setGraphType = {setGraphType}  text = {text} title = {title}/>
-                        <Custom setTitleColor = {setTitleColor} setTitleFontFamily = {setTitleFontFamily} setTextColor = {setTextColor} setTextFontFamily = {setTextFontFamily} />
+                        <Shape titleBtn = {titleBtn} textBtn = {textBtn} imageBtn = {imageBtn} graphBtn = {graphBtn} setTitle = {setTitle} setText = {setText} setImage = {setImage} setGraph = {setGraph} HandlePublish = {HandlePublish} image = {image} graph = {graph} setGraphType = {setGraphType}  text = {text} title = {title}/>
+                        <Custom />
                     </>
                     :
                     <>
                         <DataPicker setGraph = {setGraph}  setPickData = {setPickData}/>
-                        <Custom setTitleColor = {setTitleColor} setTitleFontFamily = {setTitleFontFamily} setTextColor = {setTextColor} setTextFontFamily = {setTextFontFamily} />
+                        <Custom/>
                     </>
                 }
                 </>
                :
                <>
                     <ImagePicker setImageBtn = {setImageBtn} setImage = {setImage} setPickImage = {setPickImage}/>
-                    <Custom setTitleColor = {setTitleColor} setTitleFontFamily = {setTitleFontFamily} setTextColor = {setTextColor} setTextFontFamily = {setTextFontFamily}/>
+                    <Custom/>
                 </>
             }
         </div>
