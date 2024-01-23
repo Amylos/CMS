@@ -4,50 +4,10 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\ThemeRepository;
-use ApiPlatform\Metadata\ApiProperty;
-use ApiPlatform\Metadata\Get;
-use ApiPlatform\Metadata\GetCollection;
-use ApiPlatform\Metadata\Post;
-use ApiPlatform\OpenApi\Model;
-use App\Controller\CreateThemeController;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Validator\Constraints as Assert;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
-#[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: ThemeRepository::class)]
-#[ApiResource(
-    normalizationContext: ['groups' => ['theme:read']],
-    types: ['https://schema.org/MediaObject'],
-    operations: [
-        new Get(),
-        new GetCollection(),
-        new Post(
-            controller: CreateThemeController::class,
-            deserialize: false,
-            validationContext: ['groups' => ['Default', 'theme_create']],
-            openapi: new Model\Operation(
-                requestBody: new Model\RequestBody(
-                    content: new \ArrayObject([
-                        'multipart/form-data' => [
-                            'schema' => [
-                                'type' => 'object',
-                                'properties' => [
-                                    'file' => [
-                                        'type' => 'string',
-                                        'format' => 'binary'
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ])
-                )
-            )
-        )
-    ]
-)]
+#[ApiResource]
 class Theme
 {
     #[ORM\Id]
@@ -55,36 +15,114 @@ class Theme
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ApiProperty(types: ['https://schema.org/contentUrl'])]
-    #[Groups(['theme:read'])]
-    public ?string $contentUrl = null;
-
-    #[Vich\UploadableField(mapping: "theme", fileNameProperty: "filePath")]
-    #[Assert\NotNull(groups: ['theme_create'])]
-    #[Groups(['theme:read'])]
-    public ?File $file = null;
-
     #[ORM\Column(nullable: true)]
-    #[Groups(['theme:read'])]
-    public ?string $filePath = null;
+    private ?int $article_id = null;
 
-    #[ORM\Column(nullable: true)]
-    #[Groups(['theme:read'])]
-    public ?string $blocID = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $backgroundColor = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $textColor = null;
 
-    public function getBlocID(): ?string
-    {
-        return $this->blocID;
-    }
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $fontFamily = null;
 
-    public function getFilePath(): ?string
-    {
-        return $this->filePath;
-    }
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $fontSize = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $fontWeight = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $description = null;
+
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getArticleId(): ?int
+    {
+        return $this->article_id;
+    }
+
+    public function setArticleId(?int $article_id): static
+    {
+        $this->article_id = $article_id;
+
+        return $this;
+    }
+
+    public function getBackgroundColor(): ?string
+    {
+        return $this->backgroundColor;
+    }
+
+    public function setBackgroundColor(?string $backgroundColor): static
+    {
+        $this->backgroundColor = $backgroundColor;
+
+        return $this;
+    }
+
+    public function getTextColor(): ?string
+    {
+        return $this->textColor;
+    }
+
+    public function setTextColor(?string $textColor): static
+    {
+        $this->textColor = $textColor;
+
+        return $this;
+    }
+
+    public function getFontFamily(): ?string
+    {
+        return $this->fontFamily;
+    }
+
+    public function setFontFamily(?string $fontFamily): static
+    {
+        $this->fontFamily = $fontFamily;
+
+        return $this;
+    }
+
+    public function getFontSize(): ?string
+    {
+        return $this->fontSize;
+    }
+
+    public function setFontSize(?string $fontSize): static
+    {
+        $this->fontSize = $fontSize;
+
+        return $this;
+    }
+
+    public function getFontWeight(): ?string
+    {
+        return $this->fontWeight;
+    }
+
+    public function setFontWeight(?string $fontWeight): static
+    {
+        $this->fontWeight = $fontWeight;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
     }
 }

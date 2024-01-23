@@ -27,11 +27,22 @@ const Maker = (props) => {
 
     const [newArticleId, setNewArticleId] =  useState(null);
 
+    const [textColor,setTextColor] = useState(null);
+    const [backgroundColor,setBackgroundColor] = useState(null);
+    const [fontFamily,setFontFamily] = useState(null);
+    const [fontSize,setFontSize] = useState(null);
+    const [fontWeight,setFontWeight] = useState(null);
+    const [selectedTheme, setSelectedTheme] = useState(null);
+
+
     useEffect(() =>{
         console.log('----------------------------------------------------------------');
         console.log('titleBtn :', titleBtn, 'textBtn : ', textBtn, 'imageBtn : ', imageBtn, 'graphBtn : ', graphBtn);
         console.log('title :', title, 'text : ', text, 'image : ', image, 'graph : ', graph);
-        console.log('New Article ID : ', newArticleId);
+        console.log('backgroundColor :', backgroundColor, 'textColor : ', textColor);
+        console.log('FontFamily : ', fontFamily, 'fontSize :', fontSize, 'fontWeight : ', fontWeight);
+
+        console.log('New Article ID : ', newArticleId, 'SelectedTheme: ', selectedTheme);
         console.log('Pick image : ', pickImage, 'Pick data : ', pickData, 'graphType : ', graphType);
 
         console.log('----------------------------------------------------------------');
@@ -41,7 +52,7 @@ const Maker = (props) => {
         imageBtn == image ? setImage(null) : null;
         graphBtn == false ? setGraph(null) : null;
 
-    },[titleBtn,textBtn,imageBtn,graphBtn,title,text,image,graph,graph,graphType])
+    },[titleBtn,textBtn,imageBtn,graphBtn,title,text,image,graph,backgroundColor,textColor,fontFamily,fontSize,fontWeight,graph,graphType, selectedTheme])
 
 /**************************************************************************************/
 /**************************************************************************************/
@@ -67,6 +78,7 @@ const Maker = (props) => {
                         user: `/api/users/${props.id}`,
                         user_id: props.id,
                         owner : props.username,
+                        selectedTheme : selectedTheme
                     }),
                 });
 
@@ -238,20 +250,20 @@ const Maker = (props) => {
                 {
                     pickData == false ?
                     <>
-                        <Shape titleBtn = {titleBtn} textBtn = {textBtn} imageBtn = {imageBtn} graphBtn = {graphBtn} setTitle = {setTitle} setText = {setText} setImage = {setImage} setGraph = {setGraph} HandlePublish = {HandlePublish} image = {image} graph = {graph} setGraphType = {setGraphType}  text = {text} title = {title}/>
-                        <Custom />
+                        <Shape textColor = {textColor} backgroundColor = {backgroundColor} fontFamily = {fontFamily} fontWeight = {fontWeight} fontSize = {fontSize} titleBtn = {titleBtn} textBtn = {textBtn} imageBtn = {imageBtn} graphBtn = {graphBtn} setTitle = {setTitle} setText = {setText} setImage = {setImage} setGraph = {setGraph} setTextColor = {setTextColor} setFontFamily = {setFontFamily} setBackgroundColor = {setBackgroundColor} setFontWeight = {setFontWeight} setFontSize = {setFontSize} HandlePublish = {HandlePublish} image = {image} graph = {graph} setGraphType = {setGraphType}  text = {text} title = {title}/>
+                        <Custom setSelectedTheme = {setSelectedTheme} setTextColor = {setTextColor} setFontFamily = {setFontFamily} setBackgroundColor = {setBackgroundColor} setFontWeight = {setFontWeight} setFontSize = {setFontSize} />
                     </>
                     :
                     <>
                         <DataPicker setGraph = {setGraph}  setPickData = {setPickData}/>
-                        <Custom/>
+                        <Custom setSelectedTheme = {setSelectedTheme} setTextColor = {setTextColor} setFontFamily = {setFontFamily} setBackgroundColor = {setBackgroundColor} setFontWeight = {setFontWeight} setFontSize = {setFontSize} />
                     </>
                 }
                 </>
                :
                <>
                     <ImagePicker setImageBtn = {setImageBtn} setImage = {setImage} setPickImage = {setPickImage}/>
-                    <Custom/>
+                    <Custom setSelectedTheme = {setSelectedTheme} setTextColor = {setTextColor} setFontFamily = {setFontFamily} setBackgroundColor = {setBackgroundColor} setFontWeight = {setFontWeight} setFontSize = {setFontSize} />
                 </>
             }
         </div>

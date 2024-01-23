@@ -13,7 +13,7 @@ const Shape = (props) => {
   }
 
   return (
-    <div className='Shape'>
+    <div className='Shape' >
       {
         props.titleBtn == true ?
           <BlocTitle Handle = {HandleChangeTitle} data = {props}/>
@@ -58,9 +58,9 @@ const BlocTitle = (props) => {
     <div className='BlocText'>
       {
         props.data.title ?
-        <input type='text' value={props.data.title} style={{ color: props.data.titleColor, fontFamily: props.data.titleFontFamily }} placeholder='title' onChange={props.Handle}></input>
+        <input type='text' value={props.data.title} style={{ color: props.data.textColor, fontFamily: props.data.fontFamily, fontWeight : props.data.fontWeight, fontSize : props.data.fontSize }} placeholder='title' onChange={props.Handle}></input>
         :
-        <input type='text' style={{ color: props.data.titleColor, fontFamily: props.data.titleFontFamily }} placeholder='title' onChange={props.Handle}></input>
+        <input type='text' style={{ color: props.data.textColor, fontFamily: props.data.fontFamily, fontWeight : props.data.fontWeight, fontSize : props.data.fontSize }} placeholder='title' onChange={props.Handle}></input>
       }
     </div>
   );
@@ -73,9 +73,9 @@ const BlocText = (props) => {
     <div className='BlocText'>
     {
       props.data.text ?
-      <input type='text' value={props.data.text}  style={{ color: props.data.textColor, fontFamily: props.data.textFontFamily }} placeholder='text' onChange={props.Handle}></input>
+      <input type='text' value={props.data.text} style={{ color: props.data.textColor, fontFamily: props.data.fontFamily, fontWeight : props.data.fontWeight, fontSize : props.data.fontSize }} placeholder='text' onChange={props.Handle}></input>
       :
-      <input type='text' style={{ color: props.data.textColor, fontFamily: props.data.textFontFamily }} placeholder='text' onChange={props.Handle}></input>
+      <input type='text' style={{ color: props.data.textColor, fontFamily: props.data.fontFamily, fontWeight : props.data.fontWeight, fontSize : props.data.fontSize }} placeholder='text' onChange={props.Handle}></input>
     }
     </div>
   );

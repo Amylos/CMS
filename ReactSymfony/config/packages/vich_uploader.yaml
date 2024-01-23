@@ -14,8 +14,3 @@ vich_uploader:
             upload_destination: '%kernel.project_dir%/public/media/CSV'
             # Will rename uploaded files using a uniqueid as a prefix.
             namer: Vich\UploaderBundle\Naming\OrignameNamer
-        theme:
-            uri_prefix: /media/themes
-            upload_destination: '%kernel.project_dir%/public/media/themes'
-            # Will rename uploaded files using a uniqueid as a prefix.
-            namer: Vich\UploaderBundle\Naming\OrignameNamer

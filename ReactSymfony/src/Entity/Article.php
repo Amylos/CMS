@@ -45,6 +45,9 @@ class Article
     #[ORM\OneToMany(mappedBy: 'articles', targetEntity: Bloc::class, orphanRemoval: true)]
     private Collection $blocs;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $selectedTheme = null;
+
     public function __construct()
     {
         $this->blocs = new ArrayCollection();
@@ -167,6 +170,18 @@ class Article
     public function setOwner(string $owner): static
     {
         $this->owner = $owner;
+
+        return $this;
+    }
+
+    public function getSelectedTheme(): ?int
+    {
+        return $this->selectedTheme;
+    }
+
+    public function setSelectedTheme(?int $selectedTheme): static
+    {
+        $this->selectedTheme = $selectedTheme;
 
         return $this;
     }

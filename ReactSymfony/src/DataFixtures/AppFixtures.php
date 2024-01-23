@@ -7,7 +7,7 @@ use Faker\Factory;
 use App\Entity\Article;
 use App\Entity\User;
 use App\Entity\Bloc;
-use App\Entity\Image;
+use App\Entity\Theme;
 
 
 
@@ -92,6 +92,22 @@ class AppFixtures extends Fixture
             $manager->persist($user[$i]);
             $manager->flush();
         }
+
+
+        /***********************/
+        /*********THEMES********/
+        /***********************/
+
+        $Theme = new Theme();
+        $Theme->setTextColor("Red");
+        $Theme->setBackgroundColor("blue");
+        $Theme->setFontFamily("Verdana");
+        $Theme->setFontWeight("bold");
+        $Theme->setFontSize("20");
+        $Theme->setDescription("Default Theme");
+
+        $manager->persist($Theme);
+        $manager->flush();
 
 
         /***********************/
