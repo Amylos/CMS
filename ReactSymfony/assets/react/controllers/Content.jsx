@@ -27,7 +27,7 @@ const Content = (props) => {
                 case "DashBoard":
                         return (
                             <>
-                                <SideBar setContent ={setContent}/>
+                                <SideBar setContent ={setContent} role = {props.role}/>
                                 <DashBoard/>
                             </>
                         )
@@ -44,7 +44,11 @@ const Content = (props) => {
                     return (
                         <>
                             <SideBar setContent ={setContent}/>
-                            <Data data = {props}/>
+                            {
+                                props.role == 'ROLE_ADMIN' || props.role == 'ROLE_FOURNISSEUR' ?
+                                    <Data data = {props}/>
+                                : null
+                            }
                         </>
                     )
                     break;
@@ -52,7 +56,12 @@ const Content = (props) => {
                     return (
                         <>
                             <SideBar setContent ={setContent}/>
-                            <Media data = {props}/>
+                            {
+                                props.role == 'ROLE_ADMIN' || props.role == 'ROLE_FOURNISSEUR' ?
+                                    <Media data = {props}/>
+                                : null
+
+                            }
                         </>
                     )
                     break;
@@ -60,7 +69,12 @@ const Content = (props) => {
                     return (
                         <>
                             <SideBar setContent ={setContent}/>
-                            <Theme data = {props}/>
+                            {
+                                props.role == 'ROLE_ADMIN' || props.role == 'ROLE_DESIGN' ?
+                                    <Theme data = {props}/>
+                                : null
+
+                            }
                         </>
                     )
                     break;
@@ -68,7 +82,7 @@ const Content = (props) => {
                     return (
                         <>
                             <SideBar setContent ={setContent}/>
-                            <Users id = {props.id}/>
+                            <Users id = {props.id} role = {props.role}/>
                         </>
                     )
                     break;

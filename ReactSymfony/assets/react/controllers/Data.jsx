@@ -65,7 +65,7 @@ const Data = (Data) => {
     formData.append('file', selectedFile);
 
     try {
-      const response = await fetch('http://localhost:8000/api/data_csvs', {
+      const response = await fetch('http://localhost:8000/api/data_c_s_vs', {
         method: 'POST',
         body: formData,
       });
@@ -83,7 +83,7 @@ const Data = (Data) => {
   const HandleDelete = async (id, path) => {
     // delete API
     try {
-      const response = await fetch(`http://localhost:8000/api/data_csvs/${id}`, {
+      const response = await fetch(`http://localhost:8000/api/data_c_s_vs/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

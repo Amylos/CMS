@@ -49,3 +49,10 @@
   .ButtonTheme:hover {
     background-color: #333;
   }
+
+
+  .VueTheme{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }

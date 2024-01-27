@@ -114,7 +114,7 @@ class AppFixtures extends Fixture
         /********ARTICLES*******/
         /***********************/
 
-        for($i = 0; $i<10;$i++){
+        for($i = 0; $i<5;$i++){
             $article[$i] = new Article();
             $article[$i]->setTitle("Title : " . $i);
             $article[$i]->setUser($userAdmin);

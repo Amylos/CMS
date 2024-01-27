@@ -39,20 +39,6 @@
 				<div class="Registeration__header">
 					<h1 class="Registeration__title">Create Account</h1>
 					<p class="Registeration__text">
-						Sign in with your social account
-					</p>
-
-					<ul class="Registeration__social">
-					 <li>
-                                <a href="#"><img class="social-links" src="/public/images/linkedin.png"></a>
-                            </li>
-                            <li>
-                                <a href="#"><img class="social-links" src="/public/images/gmail.png"></a>
-                            </li>
-                            <li>
-                                <a href="#"><img class="social-links" src="/public/images/Facebook.png"></a>
-                            </li>
-					</ul>
 				</div>
 				<div>
 					<p>
@@ -100,7 +86,6 @@
 						{{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'input-field'}}) }}
 					</div>
 				</div>
-				{# {{ form_row(registrationForm.agreeTerms) }} #}
 				<div class="flex-container">
 					<button type="submit" class="btn__SignIN">Register</button>
 				</div>
@@ -111,10 +96,10 @@
 				<h1 class="Registeration__form__redirection__title">
 					Welcome back !
 				</h1>
-				<p class="Redirection__text">Sign up and create your first
+				<p class="Redirection__text">Log in and create your first
 					<br>
 					article on GAP.</p>
-				<button type="submit" class="btn__SignUp"> <a href="{{ path('app_login') }}" class="btn btn-primary">Sign IN</a></button>
+				<button type="submit" class="btn__SignUp"> <a href="{{ path('app_login') }}" class="btn btn-primary">LOG IN</a></button>
 			</div>
 		</div>
 	</div>

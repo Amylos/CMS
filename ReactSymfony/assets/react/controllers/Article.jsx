@@ -5,29 +5,33 @@ const Article = (props) => {
   console.log("Article props : ", props);
   const [dataArticle, setDataArticle] = useState(null);
   const [dataBlocs, setDataBlocs] = useState(null);
+  const [dataThemes, setDataThemes] = useState(null);
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [reload, setReload] = useState(false);
 
   const [showArticle, setShowArticle] = useState(false);
   const [showArticleOwner, setShowArticleOwner] = useState(null);
+  const [selectedTheme, setSelectedTheme] = useState({backgroundColor : "white"});
 
-  useEffect(() => {
-    const fetchDataArticles = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch("http://localhost:8000/api/articles");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
+    useEffect(() => {
+      const fetchDataThemes = async () => {
+        try {
+          setLoading(true);
+          const response = await fetch("http://localhost:8000/api/themes");
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          const result = await response.json();
+          setDataThemes(result["hydra:member"]);
+          console.log(result["hydra:member"]);
+        } catch (error) {
+          setError(error);
+        } finally {
+          setLoading(false);
         }
-        const result = await response.json();
-        setDataArticle(result["hydra:member"]);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
+      };
 
     const fetchDataBlocs = async () => {
       try {
@@ -46,8 +50,25 @@ const Article = (props) => {
       }
     };
 
+    const fetchDataArticles = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch("http://localhost:8000/api/articles");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const result = await response.json();
+        setDataArticle(result["hydra:member"]);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchDataArticles();
     fetchDataBlocs();
+    fetchDataThemes();
   }, [reload]);
 
   useEffect(() => {
@@ -93,7 +114,13 @@ const Article = (props) => {
 
   function HandleShow(articleId) {
     console.log("HandleShow : ", articleId);
-    showArticle == false ? setShowArticle(articleId) : setShowArticle(false);
+    if(showArticle == false){
+      setShowArticle(articleId);
+    }
+    else{
+      setShowArticle(false);
+      setSelectedTheme({backgroundColor : "white"});
+    }
   }
 
   function HandleOwner(owner) {
@@ -101,6 +128,14 @@ const Article = (props) => {
     showArticleOwner == null
       ? setShowArticleOwner(owner)
       : setShowArticleOwner(null);
+  }
+
+  function HandleSelectTheme(themeId){
+    dataThemes.map((theme) =>{
+      if(themeId == theme.id){
+        setSelectedTheme(theme);
+      }
+    })
   }
 
   return (
@@ -112,62 +147,44 @@ const Article = (props) => {
             <a href="/article" className=" articleAdd hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> + </a>
           : null
         }
-          {dataArticle &&
-            dataBlocs &&
-            dataArticle.map((article) => (
-              <button
-                className="article"
-                key={article.id}
-                onClick={() => {
-                  HandleShow(article.id);
-                  HandleOwner(article.owner);
-                }}
-              >
-                {dataBlocs &&
-                  dataBlocs.map((bloc) => (
+        {dataArticle &&
+          dataBlocs &&
+          dataArticle.map((article) => (
+            <button className="article" key={article.id} onClick={() => {HandleShow(article.id);HandleOwner(article.owner);HandleSelectTheme(article.selectedTheme)}}>
+              {
+                dataBlocs && dataBlocs.map((bloc) =>(
+                  <>
+                    {
+                      bloc.articleId == article.id ?
                     <>
-                      {bloc.articleId == article.id ? (
-                        <li className="Article__layout " key={bloc.id}>
-                          <div className="Article__background">
-                          {
-                            bloc.imagePath ?
-                              <img className="" src={`/media/images/${bloc.imagePath}`}/>
-                            : null
-                          }
-                          </div>
-                          <div className="Article__header">
-                          </div>
-                          <div className="Article__footer">
-                            <h1 className="Article__title"> {bloc.title} </h1>
-                            <p className="Article__desc">{bloc.text}</p>
-                            <p className="Article__author"> Rédigé par : {article.owner}</p>
-                          </div>
-                        </li>
-                      ) : null}
+                      {
+                        bloc.imagePath ?
+                          <img className="" src={`/media/images/${bloc.imagePath}`}/>
+                        : null
+                      }
+                      <h2>{bloc.title}</h2>
                     </>
-                  ))}
-              </button>
-            ))}
+                    : null
+                    }
+                  </>
+                ))
+              }
+              <p className="Article__author"> Rédigé par : {article.owner}</p>
+            </button>
+          ))}
         </>
       ) : (
-        //HERE TO DISPLAY ONE ARTICLE
-        <>
-          <button
-            style={{ color: "blue" }}
-            onClick={() => HandleDelete(showArticle)}
-          >
-            Delete
-          </button>
-          <button style={{ color: "blue" }} onClick={() => HandleShow()}>
-            Back
-          </button>
+        <div className="ArticleDisplayedPage"   style={{ background: selectedTheme.backgroundColor }}>
+
           <ArticleDisplayed
-            dataBlocs={dataBlocs}
-            articleID={showArticle}
-            owner={showArticleOwner}
-            HandleDelete={HandleDelete}
-          />
-        </>
+          dataBlocs={dataBlocs}
+          articleID={showArticle}
+          owner={showArticleOwner}
+          HandleDelete={HandleDelete}
+          theme = {selectedTheme}/>
+          <button style={{ color: "black" }} onClick={() => HandleDelete(showArticle)}>Delete</button>
+          <button style={{ color: "black" }} onClick={() => HandleShow()}> Back </button>
+        </div>
       )}
     </div>
   );
@@ -176,24 +193,42 @@ const Article = (props) => {
 export default Article;
 const ArticleDisplayed = (props) => {
   return (
-      <div className='ArticleDisplayed' style={{color:"blue"}}>
+      <div className='ArticleDisplayed'>
         {
           props.dataBlocs ?
           props.dataBlocs.map((bloc)=>(
-            <div style={{color:"blue"}}>
+            <div>
               {
                 bloc.articleId == props.articleID ?
-                  <div style={{color:"blue"}}>
+                  <div>
                   {
                     bloc.blocType === "title" ?
-                    <div className='BlocTitle'>
+                    <>
+                     {
+                      props.theme ?
+                      <h1 className='BlocTitle' style={{color : props.theme.textColor, fontSize: props.theme.fontSize, fontFamily: props.theme.fontFamily, fontWeight: props.theme.fontWeight}}>
+                       {bloc.title}
+                      </h1>
+                      :
+                      <h1 className='BlocTitle'>
                         {bloc.title}
-                    </div>
+                      </h1>
+                      }
+                    </>
                     :
                     bloc.blocType === "text" ?
-                    <div className='BlocText'>
-                        {bloc.text}
-                    </div>
+                    <>
+                    {
+                      props.theme ?
+                      <div className='BlocText' style={{color : props.theme.textColor, fontSize: props.theme.fontSize, fontFamily: props.theme.fontFamily, fontWeight: props.theme.fontWeight}}>
+                        <p>{bloc.text}</p>
+                      </div>
+                      :
+                      <div className='BlocText'>
+                        <p>{bloc.text}</p>
+                      </div>
+                    }
+                    </>
                     :
                     bloc.blocType === "image" ?
                     <div className='BLocImage'>
@@ -219,7 +254,8 @@ const ArticleDisplayed = (props) => {
         <p>Rédigé par : {props.owner}</p>
       </div>
     );
-} 
+}
+
 {
   /* {dataArticle && dataArticle.map((article) => ( */
 }
@@ -380,3 +416,31 @@ const ArticleDisplayed = (props) => {
 // };
 
 // export default Article;
+
+
+ {/* {dataBlocs &&
+                dataBlocs.map((bloc) => (
+                  <>
+                    {bloc.articleId == article.id ?
+                    <> */}
+                    {/* <div className="Article__layout " key={bloc.id}> */}
+                        {/* <div className="Article__background">
+                        {
+                          bloc.imagePath ?
+                            <img className="" src={`/media/images/${bloc.imagePath}`}/>
+                          : null
+                        }
+                        </div>
+                        <div className="Article__header">
+                        </div>
+                        <div className="Article__footer">
+                          <h1 className="Article__title"> {bloc.title} </h1>
+                          <p className="Article__desc">{bloc.text}</p>
+                          <p className="Article__author"> Rédigé par : {article.owner}</p>
+                        </div> */}
+                      {/* </div> */}
+                    {/* </>
+                    : null
+                    } */}
+                  {/* </> */}
+                {/* ))} */}

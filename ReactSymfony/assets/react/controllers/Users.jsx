@@ -55,7 +55,6 @@ const Users = (props) => {
 
   const handleUpdate = (id) => {
     console.log(id);
-  
   };
 
   const handleDelete = async (id) => {
@@ -79,35 +78,35 @@ const Users = (props) => {
     }
   };
 
-
-
-
-  const handleUpdateRole = async (userId, newEmail) => {
+  const handleUpdateRole = async (userId, newRole, userName, lastName, firstName, email) => {
     try {
-      console.log('New Email:', newEmail);
-      const response = await fetch(`http://localhost:8000/api/users/${userId}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        },
-        body: JSON.stringify({
-          mail: newEmail, // Assuming 'mail' is the correct field for updating user email
-        }),
-      });
-  
-      if (response.ok) {
-        console.log("User email updated successfully");
-        setReload(!reload); // Toggle
-        setOpenModal(false);
-      } else {
-        console.error("Failed to update user email");
-      }
-    } catch (error) {
-      console.error("Error occurred while updating user email:", error);
-    }
-  };
+        const response = await fetch(`http://localhost:8000/api/users/${userId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
+            body: JSON.stringify({
+                id: userId,
+                roles: [newRole],
+                userName: userName,
+                lastName: lastName,
+                firstName: firstName,
+                mail: email,
+            }),
+        });
 
+        if (response.ok) {
+            console.log("User role updated successfully");
+            setReload(!reload); // Toggle
+            setOpenModal(false);
+        } else {
+            console.error("Failed to update user role. Response:", response);
+        }
+    } catch (error) {
+        console.error("Error occurred while updating user role:", error);
+    }
+};
 
 
   return (
@@ -135,15 +134,20 @@ const Users = (props) => {
             <li className="User__info"key={user.id}>
               {user.username} {user.lastName} {user.firstName} {user.mail}
               <div>
-              <select
-                id="choices"
-                name="choices"
-                onChange={(event) => handleUpdateRole(user.id, event.target.value)}>
-                <option value="ROLE_ADMIN">ROLE_ADMIN</option>
-                <option value="ROLE_DESIGN">ROLE_DESIGN</option>
-                <option value="ROLE_FOURNISSEUR">ROLE_FOURNISSEUR</option>
-                <option value="ROLE_USER">ROLE_USER</option>
-              </select>
+                {
+                  props.role == "ROLE_ADMIN" ?
+                  <select
+                  id="choices"
+                  name="choices"
+                  value ={user.roles[0]}
+                  onChange={(event) => handleUpdateRole(user.id, event.target.value,user.username,user.lastName,user.firstName,user.mail)}>
+                  <option value="ROLE_ADMIN">ROLE_ADMIN</option>
+                  <option value="ROLE_DESIGN">ROLE_DESIGN</option>
+                  <option value="ROLE_FOURNISSEUR">ROLE_FOURNISSEUR</option>
+                  <option value="ROLE_USER">ROLE_USER</option>
+                  </select>
+                  : null
+                }
 
                 <a className="btn__edit" href={`/user/edit/${user.id}`}>
                   Edit
@@ -153,6 +157,7 @@ const Users = (props) => {
                   onClick={() => {
                     setSelectedUserId(user.id);
                     setOpenModal(true);
+                    handleDelete(user.id);
                   }}
                 >
                   Delete

@@ -32,7 +32,7 @@ const Custom = (props) => {
   function SelectTheme(id,backgroundColor,textColor,fontFamily,fontSize,fontWeight,noTheme){
 
     if(noTheme){
-      props.selectedTheme(null)
+      props.setSelectedTheme(null)
       props.setBackgroundColor(null);
       props.setTextColor(null);
       props.setFontFamily(null);
@@ -48,22 +48,23 @@ const Custom = (props) => {
       props.setFontSize(fontSize);
       props.setFontWeight(fontWeight);
     }
-
-
-
-
   }
 
   return (
     <div className="Custom">
       <h1>Select a Theme</h1>
-      <ul>
+      <ul className="ListTheme">
         {
           dataThemes.map((theme) =>(
+            <li className="ThemeButton">
               <button onClick={() => SelectTheme(theme.id,theme.backgroundColor,theme.textColor,theme.fontFamily,theme.fontSize,theme.fontWeight,null)}>{theme.description}</button>
+            </li>
           ))
         }
-        <button onClick={() => {SelectTheme(null,null,null,null,null,null,1)}}>No Theme</button>
+        <div className="ThemeButton">
+          <button onClick={() => {SelectTheme(null,null,null,null,null,null,1)}}>No Theme</button>
+
+        </div>
       </ul>
     </div>
   );
