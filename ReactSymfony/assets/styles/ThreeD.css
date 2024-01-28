@@ -1,0 +1,50 @@
+
+.ThreeD {
+    text-align: center;
+    background-color: #fff;
+  }
+  
+  
+  .trois-d {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    
+  }
+  
+  .trois-d .canva-1,
+  .trois-d .canva-2,
+  .trois-d .canva-3 {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 0; /* Assurez-vous que les canva restent au-dessus de la modal */
+  }
+  
+  .modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: green;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 10;
+    box-sizing: border-box; /* Assure que la taille inclut la bordure et le rembourrage */
+    padding: 20px; /* Ajustez la marge intérieure selon vos besoins */
+  }
+  
+  .trois-d.hidden .modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(0);
+    z-index: 0;
+    padding: 0; /* Assurez-vous de réinitialiser la marge intérieure pour éviter des différences de taille */
+  }
+  
+  
+  

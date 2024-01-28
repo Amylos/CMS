@@ -3,71 +3,62 @@
 {% block title %}register.html.twig
 {% endblock %}
 
-
-
 {% block body %}
-	<div class="container" >
-		<a href="/home" className="NavBar__logo">
-          <h1>GAP.</h1>
-        </a>
 
-		<div class="Registration__container">
-			<div class="Registeration__form">
-				<div class="Registeration__header">
-					<h1 class="Registeration__title">Create Account</h1>
-					<p class="Registeration__text">
-				</div>
-				
-
+	<a href="{{ path('app_home') }}">home</a>
+	<div class="Register__container">
+		<div class="wrapper">
+			<form method="post" action="{{ path('app_register') }}">
 				{{ form_start(registrationForm) }}
-		    	{{ form_errors(registrationForm) }}
-				<div class="input-style">
-					<div class="flex-container">
-						{{ form_label(registrationForm.firstName, null, {'label_attr': {'class': 'placeholder', 'style':'color: #121928'}}) }}
-						{{ form_widget(registrationForm.firstName, {'attr': {'class': 'input-field'}}) }}
-					</div>
-				</div>
-				<div class="input-style">
-					<div class="flex-container">
-						{{ form_label(registrationForm.lastName, null, {'label_attr': {'class': 'placeholder', 'style':'color: #121928'}}) }}
-						{{ form_widget(registrationForm.lastName, {'attr': {'class': 'input-field'}}) }}
-					</div>
-				</div>
-				<div class="input-style">
-					<div class="flex-container">
-						{{ form_label(registrationForm.mail, null, {'label_attr': {'class': 'placeholder', 'style':'color: #121928'}}) }}
-						{{ form_widget(registrationForm.mail, {'attr': {'class': 'input-field'}}) }}
-					</div>
+				{{ form_errors(registrationForm) }}
+				<h1>Create Account</h1>
+
+				<div class="input-box">
+					{{ form_label(registrationForm.firstName, null, {'label_attr': {'class': 'placeholder', 'style':'color: #121928'}}) }}
+					{{ form_widget(registrationForm.firstName, {'attr': {'class': 'input'}}) }}
+					<i class='bx bxs-user'></i>
 				</div>
 
-				<div class="input-style">
-					<div class="flex-container">
-						{{ form_label(registrationForm.username, null, {'class': 'placeholder', 'style': 'color: #121928'}) }}
-						{{ form_widget(registrationForm.username, {'attr': {'class': 'input-field'}}) }}
-					</div>
+				<div class="input-box">
+					{{ form_label(registrationForm.lastName, null, {'label_attr': {'class': 'placeholder', 'style':'color: #121928'}}) }}
+					{{ form_widget(registrationForm.lastName, {'attr': {'class': 'input'}}) }}
+					<i class='bx bxs-user'></i>
 				</div>
 
-				<div class="input-style">
-					<div class="flex-container">
-						{{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'input-field'}}) }}
-					</div>
+				<div class="input-box">
+					{{ form_label(registrationForm.mail, null, {'label_attr': {'class': 'placeholder', 'style':'color: #121928'}}) }}
+					{{ form_widget(registrationForm.mail, {'attr': {'class': 'input-'}}) }}
+					<i class='bx bx-envelope'></i>
 				</div>
-				<div class="flex-container">
-					<button type="submit" class="btn__SignIN">Register</button>
-				</div>
-				{{ form_end(registrationForm) }}
-			</div>
 
-			<div class="Registeration__form__redirection">
-				<h1 class="Registeration__form__redirection__title">
-					Welcome back !
-				</h1>
-				<p class="Redirection__text">Log in and create your first
-					<br>
-					article on GAP.</p>
-				<button type="submit" class="btn__SignUp"> <a href="{{ path('app_login') }}" class="btn btn-primary">LOG IN</a></button>
-			</div>
+				<div class="input-box">
+					{{ form_label(registrationForm.username, null, {'class': 'placeholder', 'style': 'color: #121928'}) }}
+					{{ form_widget(registrationForm.username, {'attr': {'class': 'input'}}) }}
+					<i class='bx bxs-user'></i>
+				</div>
+
+				<div class="input-box">
+					{{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'input'}}) }}
+					<i class='bx bxs-lock-alt'></i>
+				</div>
+
+				<div class="input-box">
+					{{ form_row(registrationForm.agreeTerms) }}
+				</div>
+
+				<div class="register-link">
+					<p>You already have an account !
+					</p>
+					<a href={{ path('app_login') }}>Login
+					</a>
+				</div>
+				<div>
+					 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+					<button type="submit" class="btn">Register</button>
+				</div>
+			</form>
+			{{ form_end(registrationForm) }}
 		</div>
 	</div>
-{% endblock %}
 
+{% endblock %}

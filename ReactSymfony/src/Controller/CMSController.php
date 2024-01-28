@@ -62,25 +62,27 @@ class CMSController extends AbstractController
     public function userEdit(Request $request, int $id, UserRepository $repository, EntityManagerInterface $entityManager)
     {
         $user = $repository->findOneBy(['id' => $id]);
-
-        $crea_form = $this->createForm(UserFormType::class,$user,['method' => 'POST', 'submit label' => 'Enregistrer les modifications']);
-
+    
+        $crea_form = $this->createForm(UserFormType::class, $user, ['method' => 'POST', 'submit label' => 'Enregistrer les modifications']);
+    
         $crea_form->handleRequest($request);
-
+    
         if ($user != null) {
             if ($crea_form->isSubmitted() && $crea_form->isValid()) {
                 $entityManager->persist($user);
                 $entityManager->flush();
-
+    
                 $this->addFlash('success', 'Votre user a bien été modifié avec succès !');
                 return $this->redirectToRoute('app_home');
             }
         }
-
-        return $this->render('cms/userEdit.html.twig',[
-            'crea_form' => $crea_form->createView()
+    
+        return $this->render('cms/userEdit.html.twig', [
+            'crea_form' => $crea_form->createView(),
+            'user' => $user, // Pass the user variable to the template
         ]);
     }
+    
 
     #[Route('/article', name: 'app_article')]
     public function build(Security $security): Response

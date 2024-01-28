@@ -32,7 +32,12 @@
     "dependencies": {
         "@headlessui/react": "^1.7.17",
         "@heroicons/react": "^2.0.18",
+        "@react-three/drei": "^9.96.5",
+        "@react-three/fiber": "^8.15.15",
+        "@types/three": "^0.160.0",
         "chart.js": "^4.4.1",
-        "react-chartjs-2": "^5.2.0"
+        "react-chartjs-2": "^5.2.0",
+        "styled-components": "^6.1.8",
+        "three": "^0.160.1"
     }
 }

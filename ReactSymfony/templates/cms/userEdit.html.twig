@@ -4,11 +4,53 @@
 
 {% block body %}
 
-<div>
-    <a href="{{ path('app_home') }}" class="btn btn-primary">home</a>
-    {{ form(crea_form) }}
+	<div>
+		<a href="{{ path('app_home') }}">home</a>
+		<main>
+			<section>
+				<div>
+					<div class="Register__container">
+						<div class="wrapper">
+							<form method="post" action="{{ path('app_user_edit', {'id': user.id}) }}">
+								{{ form_errors(crea_form) }}
+								{{ form_start(crea_form) }}
+								<h1>Edit your profile
+								</h1>
 
-</div>
+								<div class="input-box">
 
+									{{ form_widget(crea_form.firstName, {'attr': {'class': 'input'}}) }}
+									<i class='bx bxs-user'></i>
+								</div>
+
+								<div class="input-box">
+
+
+									{{ form_widget(crea_form.lastName, {'attr': {'class': 'input'}}) }}
+									<i class='bx bxs-user'></i>
+								</div>
+
+								<div class="input-box">
+
+									{{ form_widget(crea_form.mail, {'attr': {'class': 'input-'}}) }}
+									<i class='bx bx-envelope'></i>
+								</div>
+
+								<div class="input-box">
+
+									{{ form_widget(crea_form.username, {'attr': {'class': 'input'}}) }}
+									<i class='bx bxs-user'></i>
+								</div>
+
+							</form>
+							{{ form_end(crea_form) }}
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+
+	</div>
 
 {% endblock %}

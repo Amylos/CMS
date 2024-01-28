@@ -1,12 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{controller_route}}{% endblock %}
+{% block title %}
+	{{controller_route}}
+{% endblock %}
 
 {% block body %}
-
-    <a href="{{ path('app_home') }}" class="btn btn-primary">HOME</a>
-    <a href="{{ path('app_login') }}" class="btn btn-primary">login</a>
-    <div {{ react_component('ThreeD') }}></div>
-
+	<div class="ThreeDPage">
+		<div {{ react_component('ThreeD') }}></div>
+    <div class="ThreeDPage__utilities">
+		<a href="{{ path('app_home') }}" class="ThreeDPage__link"> Watch articles </a>
+        <a href="{{ path('app_register') }}" class="ThreeDPage__link">Register</a>
+		<a href="{{ path('app_login') }}" class="ThreeDPage__link">login</a>
+	</div>
 
 {% endblock %}
