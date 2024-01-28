@@ -35,7 +35,7 @@ const Content = (props) => {
                 case "Article":
                         return (
                             <>
-                                <SideBar setContent ={setContent}/>
+                                <SideBar setContent ={setContent} role = {props.role}/>
                                 <Article data = {props}/>
                             </>
                         )
@@ -43,7 +43,7 @@ const Content = (props) => {
                 case "Data":
                     return (
                         <>
-                            <SideBar setContent ={setContent}/>
+                            <SideBar setContent ={setContent} role = {props.role}/>
                             {
                                 props.role == 'ROLE_ADMIN' || props.role == 'ROLE_FOURNISSEUR' ?
                                     <Data data = {props}/>
@@ -55,7 +55,7 @@ const Content = (props) => {
                 case "Media":
                     return (
                         <>
-                            <SideBar setContent ={setContent}/>
+                            <SideBar setContent ={setContent} role = {props.role}/>
                             {
                                 props.role == 'ROLE_ADMIN' || props.role == 'ROLE_FOURNISSEUR' ?
                                     <Media data = {props}/>
@@ -68,7 +68,7 @@ const Content = (props) => {
                 case "Theme":
                     return (
                         <>
-                            <SideBar setContent ={setContent}/>
+                            <SideBar setContent ={setContent} role = {props.role}/>
                             {
                                 props.role == 'ROLE_ADMIN' || props.role == 'ROLE_DESIGN' ?
                                     <Theme data = {props}/>
@@ -81,7 +81,7 @@ const Content = (props) => {
                 case "Users":
                     return (
                         <>
-                            <SideBar setContent ={setContent}/>
+                            <SideBar setContent ={setContent} role = {props.role}/>
                             <Users id = {props.id} role = {props.role}/>
                         </>
                     )

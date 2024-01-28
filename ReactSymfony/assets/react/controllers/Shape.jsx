@@ -4,6 +4,7 @@ import Chart from './Chart';
 
 const Shape = (props) => {
 
+
   function HandleChangeTitle(e){
     props.setTitle(e.target.value);
   }
@@ -11,6 +12,9 @@ const Shape = (props) => {
   function HandleChangeText(e){
     props.setText(e.target.value);
   }
+
+
+
 
   return (
     <div className='Shape' style={{ background: props.backgroundColor}}>
@@ -41,7 +45,15 @@ const Shape = (props) => {
       :
         null
       }
-      <button onClick={props.HandlePublish}>Publish</button>
+      <button className="ButtonPublish" onClick={props.HandlePublish}>Publish</button>
+
+      {/* Pop-up */}
+      {props.isPopUpVisible == true && (
+        <div className='PopUp'>
+          <p>Theme published !</p>
+          <button onClick={props.setPopUpVisible}>Fermer</button>
+        </div>
+      )}
     </div>
   );
 };

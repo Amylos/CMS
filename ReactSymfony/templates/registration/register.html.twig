@@ -1,28 +1,3 @@
-{# {% extends 'base.html.twig' %}
-
-{% block title %}register.html.twig{% endblock %}
-
-{% block body %}
-    <a href="{{ path('app_home') }}" class="btn btn-primary">home</a>
-
-    {{ form_errors(registrationForm) }}
-
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.firstName) }}
-        {{ form_row(registrationForm.lastName) }}
-        {{ form_row(registrationForm.mail) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Register</button>
-    {{ form_end(registrationForm) }}
-
-{% endblock %}
- #}
-
-
 {% extends 'base.html.twig' %}
 {% block head %}{% endblock %}
 {% block title %}register.html.twig
@@ -31,8 +6,10 @@
 
 
 {% block body %}
-	<div class="container">
-		<a href="{{ path('app_home') }}">home</a>
+	<div class="container" >
+		<a href="/home" className="NavBar__logo">
+          <h1>GAP.</h1>
+        </a>
 
 		<div class="Registration__container">
 			<div class="Registeration__form">
@@ -40,49 +17,38 @@
 					<h1 class="Registeration__title">Create Account</h1>
 					<p class="Registeration__text">
 				</div>
-				<div>
-					<p>
-						-------------- or --------------
-					</p>
-				</div>
+				
 
 				{{ form_start(registrationForm) }}
 		    	{{ form_errors(registrationForm) }}
 				<div class="input-style">
 					<div class="flex-container">
-						<img src="/public/images/User-circle-2.png">
-						{# {{ form_label(registrationForm.firstName, null, {'label_attr': {'class': 'placeholder', 'style':'color: #121928'}}) }} #}
+						{{ form_label(registrationForm.firstName, null, {'label_attr': {'class': 'placeholder', 'style':'color: #121928'}}) }}
 						{{ form_widget(registrationForm.firstName, {'attr': {'class': 'input-field'}}) }}
 					</div>
 				</div>
 				<div class="input-style">
 					<div class="flex-container">
-						<img src="/public/images/User-circle-2.png">
-						{# {{ form_label(registrationForm.lastName, null, {'label_attr': {'class': 'placeholder', 'style':'color: #121928'}}) }} #}
+						{{ form_label(registrationForm.lastName, null, {'label_attr': {'class': 'placeholder', 'style':'color: #121928'}}) }}
 						{{ form_widget(registrationForm.lastName, {'attr': {'class': 'input-field'}}) }}
 					</div>
 				</div>
 				<div class="input-style">
 					<div class="flex-container">
-						<img  src="/public/images/User-circle-2.png">
-						{# {{ form_label(registrationForm.mail, null, {'label_attr': {'class': 'placeholder', 'style':'color: #121928'}}) }} #}
+						{{ form_label(registrationForm.mail, null, {'label_attr': {'class': 'placeholder', 'style':'color: #121928'}}) }}
 						{{ form_widget(registrationForm.mail, {'attr': {'class': 'input-field'}}) }}
 					</div>
 				</div>
 
 				<div class="input-style">
 					<div class="flex-container">
-						<img src="/public/images/User-circle-2.png">
 						{{ form_label(registrationForm.username, null, {'class': 'placeholder', 'style': 'color: #121928'}) }}
-
 						{{ form_widget(registrationForm.username, {'attr': {'class': 'input-field'}}) }}
 					</div>
 				</div>
 
 				<div class="input-style">
 					<div class="flex-container">
-						<img src="/public/images/User-circle-2.png">
-					
 						{{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'input-field'}}) }}
 					</div>
 				</div>

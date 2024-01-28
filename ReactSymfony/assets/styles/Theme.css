@@ -37,17 +37,22 @@
   }
 
   .ButtonTheme {
+    margin-top: 10px;
     border-radius: 20px;
-    background-color: #000;
+    background-color: #121928;
     color: #fff;
     font-weight: bold;
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    border: 1px solid grey;
+
   }
 
   .ButtonTheme:hover {
-    background-color: #333;
+    background-color: white;
+    color: #121928;
+    border: 1px solid grey;
   }
 
 
@@ -56,3 +61,68 @@
     flex-direction: column;
     align-items: center;
   }
+  .VueTheme img{
+    margin-top: 20px;
+  }
+
+
+  .MakeTheme {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 4px #121928;
+  }
+  
+  .MakeTheme label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  .MakeTheme input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .MakeTheme input:focus {
+    outline: none;
+    border-color: #121928;
+  }
+
+  .PopUp {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+  }
+  
+  .PopUp button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #121928;
+    color: #fff;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .PopUp button:hover {
+    background-color: #ffffff;
+    color: #121928;
+    border: 1px solid #121928;
+
+  }
+  

@@ -35,12 +35,6 @@ class RegistrationFormType extends AbstractType
             'label' => false,
             'attr' => ['placeholder' => 'Username', 'class' => 'input-style'],
         ])
-            ->add('roles', CollectionType::class, [
-                'entry_type'   => ChoiceType::class,
-                'entry_options'  => [
-                    'choices' => ['ROLE_ADMIN' => 'ROLE_ADMIN', 'ROLE_USER' => 'ROLE_USER', 'ROLE_CUSTOMER' => 'ROLE_CUSTOMER'],
-                ],
-            ])
             ->add('agreeTerms', CheckboxType::class, [
                                 'mapped' => false,
                 'constraints' => [

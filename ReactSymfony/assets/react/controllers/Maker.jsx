@@ -35,6 +35,12 @@ const Maker = (props) => {
     const [selectedTheme, setSelectedTheme] = useState(null);
 
 
+    const [isPopUpVisible, setPopUpVisible] = useState(false);
+    const HandlePop = () => {
+      isPopUpVisible == true ? setPopUpVisible(false) : setPopUpVisible(true);
+    };
+
+
     useEffect(() =>{
         console.log('----------------------------------------------------------------');
         console.log('titleBtn :', titleBtn, 'textBtn : ', textBtn, 'imageBtn : ', imageBtn, 'graphBtn : ', graphBtn);
@@ -235,7 +241,7 @@ const Maker = (props) => {
             }
         }
 
-
+        HandlePop();
     }
 
 
@@ -250,7 +256,7 @@ const Maker = (props) => {
                 {
                     pickData == false ?
                     <>
-                        <Shape textColor = {textColor} backgroundColor = {backgroundColor} fontFamily = {fontFamily} fontWeight = {fontWeight} fontSize = {fontSize} titleBtn = {titleBtn} textBtn = {textBtn} imageBtn = {imageBtn} graphBtn = {graphBtn} setTitle = {setTitle} setText = {setText} setImage = {setImage} setGraph = {setGraph} setTextColor = {setTextColor} setFontFamily = {setFontFamily} setBackgroundColor = {setBackgroundColor} setFontWeight = {setFontWeight} setFontSize = {setFontSize} HandlePublish = {HandlePublish} image = {image} graph = {graph} setGraphType = {setGraphType}  text = {text} title = {title}/>
+                        <Shape setPopUpVisible = {setPopUpVisible} isPopUpVisible = {isPopUpVisible} textColor = {textColor} backgroundColor = {backgroundColor} fontFamily = {fontFamily} fontWeight = {fontWeight} fontSize = {fontSize} titleBtn = {titleBtn} textBtn = {textBtn} imageBtn = {imageBtn} graphBtn = {graphBtn} setTitle = {setTitle} setText = {setText} setImage = {setImage} setGraph = {setGraph} setTextColor = {setTextColor} setFontFamily = {setFontFamily} setBackgroundColor = {setBackgroundColor} setFontWeight = {setFontWeight} setFontSize = {setFontSize} HandlePublish = {HandlePublish} image = {image} graph = {graph} setGraphType = {setGraphType}  text = {text} title = {title}/>
                         <Custom setSelectedTheme = {setSelectedTheme} setTextColor = {setTextColor} setFontFamily = {setFontFamily} setBackgroundColor = {setBackgroundColor} setFontWeight = {setFontWeight} setFontSize = {setFontSize} />
                     </>
                     :

@@ -12,26 +12,16 @@
 			</div>
 		{% endif %}
 
-		{#
-		        {% if app.user %}
-		            <div class="mb-3">
-		                You are logged in as {{ app.user.userIdentifier }},
-		                <a href="{{ path('app_logout') }}">Logout</a>
-		            </div>
-		        {% endif %}
-		        #}
-
 		<div class="container">
-			<a href="{{ path('app_home') }}">home</a>
+			<a href="/home" className="NavBar__logo">
+          		<h1>GAP.</h1>
+        	</a>
 			<div class="Registration__container">
 				<div class="Registeration__form">
 					<div class="Registeration__header">
 						<h1 class="Registeration__title">Login to your account</h1>
-						
 					</div>
-
 					<div class="Login-input"></div>
-
 					<div class="input-style">
 						<label for="inputUsername">Username</label>
 						<input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus/>

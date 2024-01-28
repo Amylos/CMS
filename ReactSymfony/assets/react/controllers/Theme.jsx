@@ -1,6 +1,3 @@
-
-
-
 import React, { useState } from 'react';
 
 const Theme = () => {
@@ -11,7 +8,9 @@ const Theme = () => {
   const [fontWeight, setFontWeight] = useState('normal');
   const [textFontSize, setTextFontSize] = useState('16px');
   const [themeName, setThemeName] = useState('');
+  const [isPopUpVisible, setPopUpVisible] = useState(false);
 
+  
   const HandlePublishTheme = async (event) => {
     console.log("handleplublishtheme", titleAndTextColor, backgroundColor, fontFamily, fontWeight)
 
@@ -53,6 +52,11 @@ const Theme = () => {
       } catch (error) {
         console.error('Error creating theme:', error);
       }
+      setPopUpVisible(true);
+  };
+
+  const closePopUp = () => {
+    setPopUpVisible(false);
   };
 
   return (
@@ -77,6 +81,13 @@ const Theme = () => {
         />
       </div>
       <button className='ButtonTheme' onClick={HandlePublishTheme}>Publier le thème</button>
+      {/* Pop-up */}
+      {isPopUpVisible && (
+        <div className='PopUp'>
+          <p>Le thème a été publié avec succès!</p>
+          <button onClick={closePopUp}>Fermer</button>
+        </div>
+      )}
     </div>
   );
 };
@@ -130,15 +141,15 @@ const MakeTheme = (props) => {
 
   return (
     <div className='MakeTheme'>
-      <label htmlFor='themeName'>Nom du thème :</label>
+      <label htmlFor='themeName'>Theme name :</label>
       <input
         type='text'
         id=''
         value={props.themeName}
         onChange={handleNameChange}
       />
-      <ColorPick label='Couleur du texte :' color={setTitleAndTextColor} />
-      <ColorPickBack label='Couleur de fond :' color={setBackgroundColor} />
+      <ColorPick label='Text color :' color={setTitleAndTextColor} />
+      <ColorPickBack label='Background color :' color={setBackgroundColor} />
       <FontFamilyPick fontFamily={setFontFamily} />
       <FontWeightSelector fontWeight={setFontWeight} />
       <FontSizeSelector fontSize={setTextFontSize} />
@@ -197,7 +208,7 @@ const FontFamilyPick = ({ fontFamily }) => {
 
   return (
     <div className='FontFamilyPick'>
-      <label htmlFor='fontSelector'>Sélectionner la typographie :</label>
+      <label htmlFor='fontSelector'>Select a font family :</label>
       <select id='fontSelector' value={selectedFont} onChange={handleFontChange}>
         <option value='Arial'>Arial</option>
         <option value='Verdana'>Verdana</option>
@@ -220,7 +231,7 @@ const FontWeightSelector = ({ fontWeight }) => {
 
   return (
     <div>
-      <label htmlFor='fontWeight'>Sélectionnez la font weight :</label>
+      <label htmlFor='fontWeight'>Select a font weight :</label>
       <select
         id='fontWeight'
         name='fontWeight'
@@ -246,7 +257,7 @@ const FontSizeSelector = ({ fontSize }) => {
 
   return (
     <div>
-      <label htmlFor='fontSize'>Sélectionnez la taille du texte :</label>
+      <label htmlFor='fontSize'>Select a font size :</label>
       <input
         type='range'
         id='fontSize'
