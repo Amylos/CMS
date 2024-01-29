@@ -5,7 +5,7 @@
 
 {% block body %}
 
-	<a href="{{ path('app_home') }}">home</a>
+	<a class="GAP" href="{{ path('app_home') }}">GAP.</a>
 	<div class="Register__container">
 		<div class="wrapper">
 			<form method="post" action="{{ path('app_register') }}">
@@ -26,17 +26,15 @@
 				</div>
 
 				<div class="input-box">
-					{{ form_label(registrationForm.mail, null, {'label_attr': {'class': 'placeholder', 'style':'color: #121928'}}) }}
-					{{ form_widget(registrationForm.mail, {'attr': {'class': 'input-'}}) }}
-					<i class='bx bx-envelope'></i>
-				</div>
-
-				<div class="input-box">
 					{{ form_label(registrationForm.username, null, {'class': 'placeholder', 'style': 'color: #121928'}) }}
 					{{ form_widget(registrationForm.username, {'attr': {'class': 'input'}}) }}
 					<i class='bx bxs-user'></i>
 				</div>
-
+				<div class="input-box">
+					{{ form_label(registrationForm.mail, null, {'label_attr': {'class': 'placeholder', 'style':'color: #121928'}}) }}
+					{{ form_widget(registrationForm.mail, {'attr': {'class': 'input-'}}) }}
+					<i class='bx bx-envelope'></i>
+				</div>
 				<div class="input-box">
 					{{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'input'}}) }}
 					<i class='bx bxs-lock-alt'></i>

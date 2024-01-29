@@ -31,6 +31,14 @@ body{
   height: 100%;
   color: #121212;
 }
+
+.GAP {
+  font-size: 40px;
+  font-weight: 800;
+  margin: 0 10px;
+  color: #fff;
+ 
+}
 .Register__container{
   width: 100%;
   height: auto;
@@ -74,7 +82,8 @@ body{
   padding: 20px 45px 20px 20px;
 }
 .wrapper input::placeholder{
- color: #121212;
+ color: rgba(18, 18, 18, 0.7);
+ 
 }
 .wrapper .input-box i{
   position: absolute;

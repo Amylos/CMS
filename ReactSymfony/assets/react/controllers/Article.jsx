@@ -159,17 +159,18 @@ const Article = (props) => {
                     <>
                       {
                         bloc.imagePath ?
-                          <img className="" src={`/media/images/${bloc.imagePath}`}/>
+                          <img className="article__img" src={`/media/images/${bloc.imagePath}`}/>
                         : null
                       }
-                      <h2>{bloc.title}</h2>
+                      <h2 className="article__title">{bloc.title}</h2>
+                      <h2 className="article__content">{bloc.text}</h2>
                     </>
                     : null
                     }
                   </>
                 ))
               }
-              <p className="Article__author"> Rédigé par : {article.owner}</p>
+              <p className="article__author"> Rédigé par : {article.owner}</p>
             </button>
           ))}
         </>
@@ -182,8 +183,10 @@ const Article = (props) => {
           owner={showArticleOwner}
           HandleDelete={HandleDelete}
           theme = {selectedTheme}/>
-          <button style={{ color: "black" }} onClick={() => HandleDelete(showArticle)}>Delete</button>
-          <button style={{ color: "black" }} onClick={() => HandleShow()}> Back </button>
+          <div className="ArticleDisplayed__utilities">
+          <button className="ArticleDisplayed__btn" onClick={() => HandleShow()}> Back </button>
+          <button className="ArticleDisplayed__btnD" onClick={() => HandleDelete(showArticle)}>Delete</button>
+          </div>        
         </div>
       )}
     </div>

@@ -13,7 +13,7 @@
   .ThemeDisplay{
     display: flex;
     justify-content: space-around;
-    height: 80%;
+    height: 70%;
     border-radius: 20px;
 
   }
