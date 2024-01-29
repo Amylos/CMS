@@ -8,7 +8,7 @@
 	<a class="GAP" href="{{ path('app_home') }}">GAP.</a>
 	<div class="Register__container">
 		<div class="wrapper">
-			<form method="post" action="{{ path('app_register') }}">
+			{# <form method="post" action="{{ path('app_register') }}"> #}
 				{{ form_start(registrationForm) }}
 				{{ form_errors(registrationForm) }}
 				<h1>Create Account</h1>
@@ -51,10 +51,10 @@
 					</a>
 				</div>
 				<div>
-					 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+					 {# <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"> #}
 					<button type="submit" class="btn">Register</button>
 				</div>
-			</form>
+			{# </form> #}
 			{{ form_end(registrationForm) }}
 		</div>
 	</div>
