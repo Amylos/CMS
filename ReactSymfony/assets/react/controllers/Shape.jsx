@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Chart from './Chart';
+import BarChart from './Chart';
 
 
 const Shape = (props) => {
@@ -113,7 +113,7 @@ const BlocGraph = (props) => {
 
   return (
     <div>
-      <Chart graph = {props.data.graph} setGraphType = {props.data.setGraphType}/>
+      <BarChart graph = {props.data.graph} setGraphType = {props.data.setGraphType}/>
     </div>
   );
 };
